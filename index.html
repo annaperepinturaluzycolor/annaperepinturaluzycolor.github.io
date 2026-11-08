@@ -134,6 +134,8 @@
   /* ---- PORTADA ---- */
   .hero{display:flex; flex-wrap:wrap; align-items:stretch; min-height:min(780px, 100dvh);}
   .hero-text{flex:1 1 440px; min-width:0; display:flex; flex-direction:column; justify-content:flex-end; gap:18px; padding:clamp(48px, 7vw, 104px) clamp(20px, 6vw, 96px) clamp(48px, 6vw, 88px);}
+  .hero-name{font-family:var(--font-sign); font-weight:400; font-size:clamp(58px, 6vw, 100px); line-height:0.95; color:var(--cream); margin:4px 0 0; padding:0.08em 0 0.12em; max-width:100%;}
+  @media (max-width:480px){ .hero-name{font-size:clamp(44px, 13vw, 58px); white-space:normal;} }
   .hero-meta{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 18px;}
   .hero-sub{font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--cream-soft);}
   .hero-role{font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--gold);}
@@ -441,8 +443,8 @@
     <!-- ===== PORTADA ===== -->
     <section id="inicio" class="hero navy">
       <div class="hero-text">
-        <h1 class="sr-only">Anna Perepelkina</h1>
         <span class="eyebrow rise d1" id="heroTagline">Pintura, luz y color</span>
+        <h1 class="hero-name rise d1">Anna Perepelkina</h1>
         <div class="hero-meta rise d2">
           <span class="hero-sub" data-i18n="hero.sub">Bellas Artes · Estudio · Valencia</span>
           <span class="hero-role">Painter</span>
