@@ -33,7 +33,7 @@
   "jobTitle": "Painter",
   "description": "Pintora en Valencia especializada en pintura al aire libre (plein air), óleo y acrílico.",
   "email": "mailto:bellasartesanna@gmail.com",
-  "image": "https://annaperepinturaluzycolor.github.io/anna-estudio.webp",
+  "image": "https://annaperepinturaluzycolor.github.io/anna-estudio-2.webp",
   "url": "https://annaperepinturaluzycolor.github.io/",
   "address": { "@type": "PostalAddress", "addressLocality": "Valencia", "addressCountry": "ES" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Kyiv National University of Culture and Arts (KNUKiM)" },
@@ -130,6 +130,7 @@
   .hero-text{flex:1 1 460px; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:20px; padding:clamp(48px, 8vw, 120px) clamp(20px, 6vw, 96px);}
   .hero-text .eyebrow{animation:riseIn .8s ease .15s both;}
   .hero h1{font-weight:300; font-size:clamp(52px, 7vw, 104px); line-height:0.98; letter-spacing:-0.02em; animation:riseIn .8s ease .3s both;}
+  .hero h1.hero-sign{font-family:var(--font-sign); font-weight:400; font-size:clamp(68px, 8.6vw, 132px); line-height:0.95; letter-spacing:0; color:var(--cream); margin:4px 0 6px;}
   .hero-sub{font-size:14px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream-soft); animation:riseIn .8s ease .4s both;}
   .hero-role{font-family:var(--font-display); font-style:italic; color:var(--gold); font-size:20px; margin-top:-10px; animation:riseIn .8s ease .45s both;}
   .hero-tagline{margin:4px 0 0; font-family:var(--font-display); font-style:italic; font-weight:300; font-size:clamp(19px, 1.8vw, 24px); line-height:1.5; max-width:30ch; color:#E6DECD; animation:riseIn .8s ease .55s both;}
@@ -138,7 +139,7 @@
   .hero-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:60% 30%; animation:heroPhoto 1.2s ease both;}
   @keyframes heroPhoto{ from{opacity:0; transform:scale(1.04);} to{opacity:1; transform:none;} }
   @keyframes riseIn{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
-  @media (max-width:980px){ .hero-photo{order:-1; min-height:0; aspect-ratio:1306/1205;} .hero-text{padding:40px 20px 56px;} }
+  @media (max-width:980px){ .hero-photo{order:-1; min-height:0; aspect-ratio:1306/1204;} .hero-text{padding:40px 20px 56px;} }
 
   .texture{height:clamp(80px, 9vw, 120px); overflow:hidden;}
   .texture img{width:100%; height:100%; object-fit:cover;}
@@ -399,7 +400,7 @@
     <section id="inicio" class="hero navy">
       <div class="hero-text">
         <span class="eyebrow" id="heroTagline">Pintura, luz y color</span>
-        <h1>Anna<br>Perepelkina</h1>
+        <h1 class="hero-sign">Anna Perepelkina</h1>
         <div class="hero-sub" data-i18n="hero.sub">Bellas Artes · Estudio · Valencia</div>
         <div class="hero-role">Painter</div>
         <p class="hero-tagline" data-i18n="hero.tagline">Cada obra nace en el lienzo, pincelada a pincelada, en un diálogo entre la luz y los colores para captar las emociones.</p>
@@ -409,7 +410,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="anna-estudio.webp" width="1306" height="1205" alt="Anna Perepelkina pintando en su estudio" fetchpriority="high">
+        <img src="anna-estudio-2.webp" width="1306" height="1204" alt="Anna Perepelkina pintando en su estudio" fetchpriority="high">
       </div>
     </section>
 
