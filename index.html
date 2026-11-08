@@ -6,10 +6,9 @@
 <title>Anna Perepelkina — Pintora en Valencia | Art by Anna Perepelkina</title>
 <meta name="description" content="Anna Perepelkina, pintora en Valencia. Óleo y acrílico, pintura al aire libre (plein air) de paisajes y pueblos de la Comunitat Valenciana. Obras en venta y encargos.">
 <meta name="author" content="Anna Perepelkina">
-<meta name="theme-color" content="#24405F">
+<meta name="theme-color" content="#142438">
 
-<!-- Vista previa al compartir en WhatsApp, Instagram, Facebook...
-     Si algún día usas un dominio propio, cámbialo en las 3 líneas con https:// -->
+<!-- Vista previa al compartir. Si algún día usas un dominio propio, cámbialo en las 3 líneas con https:// -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Art by Anna Perepelkina">
 <meta property="og:title" content="Art by Anna Perepelkina — Pintora en Valencia">
@@ -34,7 +33,8 @@
   "jobTitle": "Painter",
   "description": "Pintora en Valencia especializada en pintura al aire libre (plein air), óleo y acrílico.",
   "email": "mailto:bellasartesanna@gmail.com",
-  "image": "anna-estudio.webp",
+  "image": "https://annaperepinturaluzycolor.github.io/anna-estudio.webp",
+  "url": "https://annaperepinturaluzycolor.github.io/",
   "address": { "@type": "PostalAddress", "addressLocality": "Valencia", "addressCountry": "ES" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Kyiv National University of Culture and Arts (KNUKiM)" },
   "knowsAbout": ["Pintura al óleo", "Pintura acrílica", "Plein air"]
@@ -43,7 +43,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,560;1,9..144,300;1,9..144,400&family=Mrs+Saint+Delafield&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4" defer></script>
@@ -51,217 +51,237 @@
 
 <style>
   :root{
-    --bg:#EDE7D8; --bg-alt:#E2DAC5; --ink:#2A2420; --ink-soft:#5F574A;
-    --blue:#24405F; --blue-deep:#182B41; --gold:#9A6B22; --gold-soft:rgba(174,124,46,0.15);
-    --line:rgba(42,36,32,0.16); --card:#F6F2E6; --white:#FBF9F2; --danger:#93372B; --ok:#3F6B3A;
-    --font-display:'Fraunces', Georgia, serif; --font-body:'Work Sans', system-ui, sans-serif;
-    --maxw:1180px; --nav-h:66px;
+    --bg:#F4EFE4; --bg-alt:#EAE1CF; --paper:#FBF8F1; --ink:#221D19; --ink-soft:#4E463C;
+    --navy:#142438; --navy-2:#1C3150; --gold:#D3A55A; --gold-dark:#8A5F1C; --cream:#F4EFE4; --cream-soft:#D9D1C0;
+    --line:rgba(34,29,25,0.14); --line-navy:rgba(211,165,90,0.45); --danger:#93372B; --ok:#3F6B3A;
+    --font-display:'Fraunces', Georgia, serif; --font-body:'Work Sans', system-ui, sans-serif; --font-sign:'Mrs Saint Delafield', cursive;
+    --maxw:1240px; --nav-h:74px; --pad-x:clamp(16px, 6vw, 96px); --pad-y:clamp(64px, 9vw, 128px);
+    --hang:0 30px 40px -24px rgba(34,29,25,0.55), 0 2px 6px rgba(34,29,25,0.18);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *,*::before,*::after{animation:none !important; transition:none !important;} }
-  body{
-    margin:0; color:var(--ink); font-family:var(--font-body); line-height:1.6; -webkit-font-smoothing:antialiased;
-    background:radial-gradient(1200px 800px at 15% -10%, rgba(255,255,255,0.35), transparent 60%), var(--bg);
-    overflow-x:hidden;
-  }
-  h1,h2,h3{font-family:var(--font-display); font-weight:560; letter-spacing:-0.01em; margin:0;}
-  a{color:inherit;}
-  img{max-width:100%;}
+  body{margin:0; color:var(--ink); background:var(--bg); font-family:var(--font-body); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  h1,h2,h3{font-family:var(--font-display); font-weight:400; letter-spacing:-0.01em; margin:0;}
+  a{color:var(--gold-dark);} a:hover{color:#5E3F10;}
+  img{max-width:100%; display:block;}
   button{font-family:inherit; cursor:pointer;}
-  :focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
-  @media (max-width:640px){ .wrap{padding:0 16px;} }
+  :focus-visible{outline:2px solid var(--gold-dark); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto;}
   section{scroll-margin-top:calc(var(--nav-h) + 8px);}
-  .sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
   .hidden{display:none !important;}
+  .pad{padding:var(--pad-y) var(--pad-x);}
+  .eyebrow{display:block; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-dark);}
+  .navy .eyebrow{color:var(--gold);}
+  .section-title{font-size:clamp(34px, 4.4vw, 58px); line-height:1.06; margin-top:10px;}
+  .section-head{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px 48px; margin-bottom:clamp(36px, 5vw, 64px);}
+  .section-intro{margin:0; max-width:40ch; color:var(--ink-soft); font-size:16px;}
+  .navy{background:var(--navy); color:var(--cream);}
+  .navy .section-intro{color:var(--cream-soft);}
+  .empty-msg{color:var(--ink-soft); font-style:italic; font-family:var(--font-display); font-size:1.1rem;}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .9s ease, transform .9s ease;}
+  .reveal.in-view{opacity:1; transform:none;}
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:0 26px; text-decoration:none; font-size:15px; font-weight:500; letter-spacing:0.02em; border:1px solid transparent; background:none; border-radius:0;}
+  .btn svg{width:16px; height:16px;}
+  .btn-gold{background:var(--gold); color:var(--navy); font-weight:600;} .btn-gold:hover{background:#E2B872; color:var(--navy);}
+  .btn-line-light{border-color:rgba(244,239,228,0.55); color:var(--cream);} .btn-line-light:hover{background:rgba(244,239,228,0.12); color:var(--cream);}
+  .btn-navy{background:var(--navy); color:var(--cream);} .btn-navy:hover{background:#0C1726; color:var(--cream);}
+  .btn-outline{border-color:var(--navy); color:var(--navy); min-height:44px; padding:0 18px; font-size:14px;} .btn-outline:hover{background:var(--navy); color:var(--cream);}
+  .link-line{font-size:15px; text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px;}
 
   /* ---------- NAV ---------- */
-  .site-nav{position:sticky; top:0; z-index:60; background:rgba(237,231,216,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
-  .nav-inner{max-width:var(--maxw); margin:0 auto; padding:0 28px; height:var(--nav-h); display:flex; align-items:center; gap:20px;}
-  .wordmark{font-family:var(--font-display); font-size:1.2rem; font-weight:560; text-decoration:none; white-space:nowrap; margin-right:auto;}
-  .nav-links{display:flex; gap:20px; list-style:none; margin:0; padding:0; font-size:0.9rem;}
-  .nav-links a{text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; white-space:nowrap;}
-  .nav-links a:hover{color:var(--ink); border-color:var(--gold);}
+  .site-nav{position:sticky; top:0; z-index:60; background:rgba(244,239,228,0.94); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .nav-inner{padding:0 var(--pad-x); height:var(--nav-h); display:flex; align-items:center; gap:24px;}
+  .wordmark{display:flex; flex-direction:column; text-decoration:none; color:var(--ink); line-height:1; margin-right:auto;}
+  .wordmark:hover{color:var(--ink);}
+  .wordmark .sign{font-family:var(--font-sign); font-size:44px; line-height:0.85; white-space:nowrap;}
+  .wordmark .sub{font-size:10.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-dark); padding-left:4px; margin-top:1px;}
+  .nav-links{display:flex; gap:24px; list-style:none; margin:0; padding:0; font-size:14px; letter-spacing:0.03em;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft); white-space:nowrap;}
+  .nav-links a:hover{color:var(--ink);}
   .nav-tools{display:flex; align-items:center; gap:10px;}
-  .lang-switch{display:flex; border:1px solid var(--line); border-radius:16px; overflow:hidden;}
-  .lang-switch button{background:none; border:none; padding:5px 10px; font-size:0.75rem; color:var(--ink-soft); letter-spacing:0.04em;}
-  .lang-switch button.active{background:var(--blue); color:var(--white);}
-  .social-link{display:inline-flex; width:32px; height:32px; align-items:center; justify-content:center; color:var(--ink-soft); border-radius:50%;}
-  .social-link:hover{color:var(--blue); background:rgba(36,64,95,0.08);}
+  .lang-switch{display:flex; border:1px solid rgba(34,29,25,0.2); border-radius:20px; overflow:hidden;}
+  .lang-switch button{background:none; border:none; padding:6px 12px; font-size:12px; color:var(--ink-soft); letter-spacing:0.04em;}
+  .lang-switch button.active{background:var(--navy); color:var(--cream);}
+  .social-link{display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; color:var(--ink-soft); border-radius:50%;}
+  .social-link:hover{color:var(--navy); background:rgba(20,36,56,0.08);}
   .social-link svg{width:18px; height:18px;}
-  .menu-toggle{display:none; background:none; border:1px solid var(--line); border-radius:8px; width:40px; height:40px; align-items:center; justify-content:center; color:var(--ink);}
+  .menu-toggle{display:none; background:none; border:1px solid rgba(34,29,25,0.2); width:44px; height:44px; align-items:center; justify-content:center; color:var(--ink);}
   .menu-toggle svg{width:20px; height:20px;}
-  .edit-exit{display:none; align-items:center; gap:6px; background:var(--blue); color:var(--white); border:none; padding:7px 12px; border-radius:16px; font-size:0.8rem;}
+  .edit-exit{display:none; align-items:center; gap:6px; background:var(--navy); color:var(--cream); border:none; padding:8px 14px; border-radius:18px; font-size:0.8rem;}
   body.edit-active .edit-exit{display:inline-flex;}
-  @media (max-width:900px){
+  @media (max-width:1020px){
     .menu-toggle{display:inline-flex;}
-    .nav-inner{padding:0 16px; gap:10px;}
+    .nav-inner{gap:10px;}
     .site-nav nav{position:absolute; top:var(--nav-h); left:0; right:0; background:var(--bg); border-bottom:1px solid var(--line); box-shadow:0 18px 30px -20px rgba(0,0,0,0.35); display:none;}
     .site-nav.open nav{display:block;}
-    .nav-links{flex-direction:column; gap:0; padding:8px 16px 14px;}
-    .nav-links a{display:block; padding:12px 4px; border-bottom:1px solid var(--line); font-size:1rem;}
+    .nav-links{flex-direction:column; gap:0; padding:8px var(--pad-x) 16px;}
+    .nav-links a{display:block; padding:13px 2px; border-bottom:1px solid var(--line); font-size:1rem;}
     .nav-links li:last-child a{border-bottom:none;}
     .nav-tools .social-link{display:none;}
   }
-  @media (max-width:380px){ .wordmark{font-size:1.02rem;} }
+  .wordmark{min-width:0;}
+  @media (max-width:480px){ .wordmark .sign{font-size:31px;} .wordmark .sub{font-size:9px;} .lang-switch button{padding:6px 8px;} .nav-inner{gap:8px;} }
+  @media (max-width:360px){ .wordmark .sign{font-size:26px;} }
 
   /* ---------- HERO ---------- */
-  .hero{display:grid; grid-template-columns:1.05fr 1fr; align-items:stretch; background:var(--bg-alt);}
-  .hero-photo-box{position:relative; overflow:hidden; background:var(--blue-deep); aspect-ratio:1306/1205;}
-  .hero-photo-box img{width:100%; height:100%; object-fit:cover; display:block; animation:heroPhoto 1.1s ease both;}
+  .hero{display:flex; flex-wrap:wrap; align-items:stretch;}
+  .hero-text{flex:1 1 460px; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:20px; padding:clamp(48px, 8vw, 120px) clamp(20px, 6vw, 96px);}
+  .hero-text .eyebrow{animation:riseIn .8s ease .15s both;}
+  .hero h1{font-weight:300; font-size:clamp(52px, 7vw, 104px); line-height:0.98; letter-spacing:-0.02em; animation:riseIn .8s ease .3s both;}
+  .hero-sub{font-size:14px; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream-soft); animation:riseIn .8s ease .4s both;}
+  .hero-role{font-family:var(--font-display); font-style:italic; color:var(--gold); font-size:20px; margin-top:-10px; animation:riseIn .8s ease .45s both;}
+  .hero-tagline{margin:4px 0 0; font-family:var(--font-display); font-style:italic; font-weight:300; font-size:clamp(19px, 1.8vw, 24px); line-height:1.5; max-width:30ch; color:#E6DECD; animation:riseIn .8s ease .55s both;}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; animation:riseIn .8s ease .65s both;}
+  .hero-photo{flex:1 1 520px; min-width:0; position:relative; min-height:440px; background:var(--navy-2); overflow:hidden;}
+  .hero-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:60% 30%; animation:heroPhoto 1.2s ease both;}
   @keyframes heroPhoto{ from{opacity:0; transform:scale(1.04);} to{opacity:1; transform:none;} }
-  .hero-text{display:flex; flex-direction:column; justify-content:center; gap:14px; padding:56px clamp(24px,5vw,64px);}
-  .hero-eyebrow{font-style:italic; font-family:var(--font-display); font-size:1.05rem; color:var(--gold); animation:riseIn .8s ease .2s both;}
-  .hero-text h1{font-size:clamp(2.4rem,5vw,3.6rem); line-height:1.04; animation:riseIn .8s ease .35s both;}
-  .hero-name-sub{font-weight:500; font-size:1.02rem; color:var(--ink-soft); animation:riseIn .8s ease .45s both;}
-  .hero-name-role{font-family:var(--font-display); font-style:italic; font-size:1.05rem; color:var(--gold); margin-top:-8px; animation:riseIn .8s ease .5s both;}
-  .hero-tagline{font-size:1.05rem; color:var(--ink-soft); max-width:36ch; margin:6px 0 0; animation:riseIn .8s ease .6s both;}
-  .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; animation:riseIn .8s ease .7s both;}
-  @keyframes riseIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
-  @media (max-width:840px){ .hero{grid-template-columns:1fr;} .hero-text{padding:36px 16px 44px;} }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+  @media (max-width:980px){ .hero-photo{order:-1; min-height:0; aspect-ratio:1306/1205;} .hero-text{padding:40px 20px 56px;} }
 
-  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 22px; border-radius:2px; text-decoration:none; font-size:0.92rem; border:1px solid transparent; background:none;}
-  .btn svg{width:16px; height:16px;}
-  .btn-primary{background:var(--blue); color:var(--white);}
-  .btn-primary:hover{background:var(--blue-deep);}
-  .btn-ghost{border-color:var(--ink); color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
-  .btn-small{padding:8px 14px; font-size:0.84rem;}
+  .texture{height:clamp(80px, 9vw, 120px); overflow:hidden;}
+  .texture img{width:100%; height:100%; object-fit:cover;}
 
-  /* ---------- SECTIONS ---------- */
-  .section-pad{padding:88px 0;}
-  .section-pad.alt{background:var(--bg-alt);}
-  @media (max-width:640px){ .section-pad{padding:60px 0;} }
-  .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:36px; border-bottom:1px solid var(--line); padding-bottom:18px;}
-  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
-  .section-intro{color:var(--ink-soft); max-width:62ch; margin:-14px 0 32px;}
-  .sub-head{font-size:1.35rem; margin:64px 0 8px;}
-  .empty-msg{color:var(--ink-soft); font-style:italic; font-family:var(--font-display); font-size:1.08rem;}
-  .add-btn{display:none; align-items:center; gap:8px; background:none; border:1px solid var(--blue); color:var(--blue); padding:8px 15px; border-radius:20px; font-size:0.85rem;}
-  .add-btn svg{width:14px; height:14px;}
-  .add-btn:hover{background:var(--blue); color:var(--white);}
-  body.edit-active .add-btn{display:inline-flex;}
-  .edit-only{display:none;}
-  body.edit-active .edit-only{display:block;}
-  .reveal{opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease;}
-  .reveal.in-view{opacity:1; transform:none;}
-
-  /* ---------- GALLERY (mosaico) ---------- */
-  .gallery-masonry{columns:3 280px; column-gap:26px;}
-  .art-card{break-inside:avoid; display:inline-block; width:100%; margin:0 0 26px; background:var(--card); border:1px solid var(--line); position:relative; cursor:zoom-in; transition:transform .35s ease, box-shadow .35s ease; text-align:left; padding:0; color:inherit; font:inherit;}
-  .art-card:hover{transform:translateY(-4px); box-shadow:0 18px 34px -20px rgba(24,20,15,0.45);}
-  .art-card img{width:100%; height:auto; display:block; background:var(--bg-alt);}
-  .art-meta{padding:14px 16px 16px;}
-  .art-meta h3{font-size:1.06rem; font-weight:500; margin-bottom:2px;}
-  .art-meta .sub{font-size:0.82rem; color:var(--ink-soft);}
-  .art-badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;}
-  .badge{font-size:0.74rem; padding:3px 10px; border-radius:12px; white-space:nowrap;}
-  .badge.available{background:var(--gold-soft); color:var(--gold);}
-  .badge.consult{background:rgba(36,64,95,0.1); color:var(--blue);}
-  .badge.sold{background:rgba(42,36,32,0.08); color:var(--ink-soft);}
-  .badge.prints{background:rgba(63,107,58,0.12); color:var(--ok);}
-  .art-no-image{aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#3A5473,#24405F); color:rgba(255,255,255,.75); font-size:0.8rem;}
-  .card-controls{position:absolute; top:10px; right:10px; display:none; gap:6px; z-index:2;}
+  /* ---------- GALLERY ---------- */
+  .gallery-hang{columns:2 380px; column-gap:clamp(40px, 6vw, 96px);}
+  .art{break-inside:avoid; display:block; width:100%; margin:0 0 clamp(48px, 6vw, 88px); position:relative; cursor:zoom-in;}
+  .art img{width:100%; height:auto; box-shadow:var(--hang); background:var(--bg-alt); transition:transform .5s ease;}
+  .art:hover img{transform:translateY(-6px);}
+  .art figcaption{margin-top:20px; display:flex; flex-direction:column; gap:3px;}
+  .art .t{font-family:var(--font-display); font-size:21px; line-height:1.3;}
+  .art .m{font-size:13px; color:var(--ink-soft); letter-spacing:0.04em;}
+  .art-no-image{aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; background:var(--navy-2); color:rgba(255,255,255,.75); font-size:0.8rem;}
+  .card-controls{position:absolute; top:10px; right:10px; display:none; gap:6px; z-index:3;}
   body.edit-active .card-controls{display:flex;}
-  .icon-btn{width:30px; height:30px; border-radius:50%; border:none; display:flex; align-items:center; justify-content:center; background:rgba(251,249,242,0.95); color:var(--ink); box-shadow:0 2px 8px rgba(0,0,0,0.25);}
+  .icon-btn{width:32px; height:32px; border-radius:50%; border:none; display:flex; align-items:center; justify-content:center; background:rgba(251,248,241,0.96); color:var(--ink); box-shadow:0 2px 8px rgba(0,0,0,0.25);}
   .icon-btn svg{width:14px; height:14px;}
-  .icon-btn.danger:hover{background:var(--danger); color:var(--white);}
-  .icon-btn:hover{background:var(--blue); color:var(--white);}
+  .icon-btn:hover{background:var(--navy); color:var(--cream);}
+  .icon-btn.danger:hover{background:var(--danger);}
+  .add-btn{display:none; align-items:center; gap:8px; background:none; border:1px solid var(--navy); color:var(--navy); padding:8px 15px; border-radius:20px; font-size:0.85rem;}
+  .navy .add-btn{border-color:var(--gold); color:var(--gold);}
+  .add-btn svg{width:14px; height:14px;}
+  body.edit-active .add-btn{display:inline-flex;}
 
-  /* ---------- MAP ---------- */
-  #artMap{height:440px; border:1px solid var(--line); border-radius:4px; z-index:1; background:var(--bg-alt);}
+  .map-block{margin-top:clamp(24px, 4vw, 40px);}
+  .map-block h3{font-size:clamp(26px, 3vw, 36px); margin:10px 0 8px;}
+  #artMap{height:440px; border:1px solid var(--line); z-index:1; background:var(--bg-alt); margin-top:24px;}
   @media (max-width:640px){ #artMap{height:340px;} }
   .map-popup{display:flex; gap:10px; align-items:center; cursor:pointer; min-width:190px;}
-  .map-popup img{width:64px; height:64px; object-fit:cover; border-radius:2px;}
-  .map-popup strong{font-family:var(--font-display); font-weight:500; font-size:0.95rem; display:block; line-height:1.25;}
+  .map-popup img{width:64px; height:64px; object-fit:cover;}
+  .map-popup strong{font-family:var(--font-display); font-weight:400; font-size:0.98rem; display:block; line-height:1.25;}
   .map-popup span{font-size:0.78rem; color:var(--ink-soft);}
-  .leaflet-popup-content-wrapper{border-radius:6px;}
+
+  /* ---------- QUOTE ---------- */
+  .quote{display:flex; justify-content:center; padding:clamp(72px, 10vw, 140px) clamp(20px, 8vw, 140px);}
+  .quote figure{margin:0; max-width:980px; display:flex; flex-direction:column; gap:26px; align-items:center; text-align:center;}
+  .quote blockquote{margin:0; font-family:var(--font-display); font-style:italic; font-weight:300; font-size:clamp(26px, 3.4vw, 44px); line-height:1.35;}
+  .quote figcaption{font-size:13px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold);}
+
+  /* ---------- DEL NATURAL AL LIENZO ---------- */
+  .tabs{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px;}
+  .tab{min-height:44px; padding:0 22px; border-radius:22px; border:1px solid rgba(34,29,25,0.25); background:transparent; color:var(--ink); font-size:15px; font-weight:500;}
+  .tab:hover{border-color:var(--gold-dark);}
+  .tab[aria-selected="true"]{background:var(--navy); border-color:var(--navy); color:var(--cream);}
+  .diptych{display:flex; flex-wrap:wrap; gap:clamp(20px, 3vw, 40px); align-items:stretch;}
+  .diptych figure{flex:1 1 340px; min-width:0; margin:0; display:flex; flex-direction:column; gap:12px;}
+  .diptych .lbl{font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:var(--ink-soft);}
+  .diptych .ph{width:100%; aspect-ratio:4/5; cursor:zoom-in; padding:0; border:none; background:none; display:block;}
+  .diptych .ph img{width:100%; height:100%; object-fit:cover;}
+  .diptych .wall{aspect-ratio:4/5; background:var(--bg); display:flex; align-items:center; justify-content:center; padding:8%; border:none; cursor:zoom-in; width:100%;}
+  .diptych .wall img{max-width:100%; max-height:100%; object-fit:contain; box-shadow:var(--hang);}
+  .diptych .info{flex:1 1 240px; min-width:0; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; padding-bottom:8px;}
+  .diptych .info .when{font-size:13px; color:var(--gold-dark); letter-spacing:0.06em;}
+  .diptych .info h3{font-size:30px; line-height:1.15;}
+  .diptych .info p{margin:0; color:var(--ink-soft);}
+
+  /* ---------- FEATURED ---------- */
+  .featured{display:flex; flex-wrap:wrap; gap:clamp(36px, 6vw, 96px); align-items:center;}
+  .featured .img{flex:3 1 480px; min-width:0; padding:0; border:none; background:none; cursor:zoom-in;}
+  .featured .img img{width:100%; box-shadow:0 34px 44px -26px rgba(34,29,25,0.6), 0 2px 6px rgba(34,29,25,0.18);}
+  .featured .txt{flex:2 1 320px; min-width:0; display:flex; flex-direction:column; gap:16px;}
+  .featured h2{font-size:clamp(32px, 3.6vw, 48px); line-height:1.1;}
+  .featured .meta{font-size:14px; color:var(--ink-soft);}
+  .featured p{margin:0; color:var(--ink-soft); font-size:17px; line-height:1.7;}
+  .featured .buy{display:flex; flex-wrap:wrap; align-items:center; gap:16px 24px; margin-top:8px; padding-top:22px; border-top:1px solid var(--line);}
+  .featured .price{font-family:var(--font-display); font-size:22px;}
 
   /* ---------- FOR SALE ---------- */
-  .sale-list{display:flex; flex-direction:column;}
-  .sale-row{display:grid; grid-template-columns:96px 1fr auto auto; align-items:center; gap:20px; padding:16px 0; border-bottom:1px solid var(--line);}
-  .sale-thumb{width:96px; height:96px; object-fit:cover; border-radius:2px; cursor:zoom-in; background:var(--bg-alt);}
-  .sale-info h3{font-size:1.08rem; font-weight:500;}
-  .sale-info .sub{font-size:0.84rem; color:var(--ink-soft);}
-  .sale-price{font-family:var(--font-display); font-size:1.15rem; white-space:nowrap; text-align:right;}
-  .sale-price small{display:block; font-family:var(--font-body); font-size:0.75rem; color:var(--ink-soft);}
-  @media (max-width:640px){
-    .sale-row{grid-template-columns:76px 1fr; row-gap:8px; gap:14px;}
-    .sale-thumb{width:76px; height:76px; grid-row:span 3;}
-    .sale-price{text-align:left;}
-    .sale-row .btn{justify-self:start;}
-  }
+  .sale-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap:clamp(24px, 3vw, 40px);}
+  .sale-card{background:var(--paper); border:1px solid var(--line); display:flex; flex-direction:column;}
+  .sale-card .img{padding:0; border:none; background:var(--bg-alt); cursor:zoom-in; display:block;}
+  .sale-card .img img{width:100%; aspect-ratio:4/3; object-fit:cover;}
+  .sale-card .body{padding:22px 22px 24px; display:flex; flex-direction:column; gap:6px; flex:1;}
+  .sale-card h3{font-size:21px; line-height:1.25;}
+  .sale-card .m{font-size:13px; color:var(--ink-soft);}
+  .sale-card .row{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:18px;}
+  .sale-card .price{font-family:var(--font-display); font-size:18px;}
+  .sale-card .price small{font-family:var(--font-body); font-size:13px; color:var(--ink-soft);}
+  .badge-prints{align-self:flex-start; font-size:0.74rem; padding:3px 10px; border-radius:12px; background:rgba(63,107,58,0.12); color:var(--ok);}
 
   /* ---------- COMMISSIONS ---------- */
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:step;}
-  .step{background:var(--card); border:1px solid var(--line); padding:24px 20px; position:relative;}
-  .step::before{counter-increment:step; content:counter(step); font-family:var(--font-display); font-size:2.2rem; color:var(--gold); line-height:1; display:block; margin-bottom:10px;}
-  .step h3{font-size:1.08rem; font-weight:500; margin-bottom:6px;}
-  .step p{margin:0; color:var(--ink-soft); font-size:0.92rem;}
-  .commission-cta{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:30px;}
-  .commission-cta p{margin:0; color:var(--ink-soft);}
-  @media (max-width:900px){ .steps{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .steps{grid-template-columns:1fr;} }
+  .steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));}
+  .steps li{padding:28px 28px 32px 0; border-top:1px solid var(--line-navy); display:flex; flex-direction:column; gap:10px;}
+  .steps .n{font-family:var(--font-display); font-size:44px; font-weight:300; color:var(--gold); line-height:1;}
+  .steps h3{font-size:21px;}
+  .steps p{margin:0; color:var(--cream-soft); font-size:15px; line-height:1.6;}
+  .commission-cta{display:flex; align-items:center; gap:18px 24px; flex-wrap:wrap; margin-top:40px;}
+  .commission-cta p{margin:0; color:var(--cream-soft);}
+  .commission-cta a.mail-link{color:var(--gold);}
 
   /* ---------- EVENTS ---------- */
   .events-list{display:flex; flex-direction:column;}
   .event-item{display:grid; grid-template-columns:110px 1px 1fr; gap:28px; padding:30px 0; border-bottom:1px solid var(--line); position:relative;}
   .event-item.no-date{grid-template-columns:1fr;}
   .event-item.no-date .event-date,.event-item.no-date .event-rule{display:none;}
-  .event-item.upcoming{background:var(--card); border:1px solid var(--line); padding:26px; margin-bottom:14px;}
+  .event-item.upcoming{background:var(--paper); border:1px solid var(--line); padding:26px; margin-bottom:14px;}
   .event-date{font-family:var(--font-display); text-align:right; padding-top:2px;}
-  .event-date .day{display:block; font-size:2rem; font-weight:560; line-height:1;}
+  .event-date .day{display:block; font-size:2rem; line-height:1;}
   .event-date .month{display:block; font-size:0.82rem; color:var(--ink-soft); margin-top:4px;}
   .event-rule{background:var(--line);}
   .event-body{min-width:0;}
-  .event-body h3{font-size:1.25rem; margin-bottom:4px;}
-  .event-loc{font-size:0.85rem; color:var(--gold); margin-bottom:8px;}
+  .event-body h3{font-size:1.3rem; margin-bottom:4px;}
+  .event-loc{font-size:0.85rem; color:var(--gold-dark); margin-bottom:8px;}
   .event-desc{color:var(--ink-soft); max-width:64ch; margin:0 0 4px;}
   .event-photos{display:flex; gap:10px; margin-top:14px; overflow-x:auto; padding-bottom:4px; max-width:100%;}
   .event-photos button{flex:none; padding:0; border:none; background:none; cursor:zoom-in;}
-  .event-photos img{height:160px; width:auto; max-width:260px; object-fit:cover; border-radius:2px; display:block;}
-  .event-link{display:inline-flex; align-items:center; gap:6px; margin-top:12px; background:none; border:none; padding:0; color:var(--blue); font-size:0.88rem; border-bottom:1px solid currentColor;}
+  .event-photos img{height:160px; width:auto; max-width:260px; object-fit:cover; display:block;}
+  .event-link{display:inline-flex; align-items:center; gap:6px; margin-top:12px; background:none; border:none; padding:0; color:var(--navy); font-size:0.88rem; border-bottom:1px solid currentColor;}
   .event-controls{position:absolute; top:28px; right:0; display:none; gap:6px;}
   body.edit-active .event-controls{display:flex;}
-  .tag-upcoming{display:inline-block; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); background:var(--gold); padding:3px 9px; border-radius:10px; margin-bottom:8px;}
-  @media (max-width:640px){
-    .event-item{grid-template-columns:62px 1px 1fr; gap:14px;}
-    .event-date .day{font-size:1.5rem;}
-    .event-controls{position:static; margin-top:10px;}
-    .event-photos img{height:120px;}
-  }
+  .tag-upcoming{display:inline-block; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:3px 10px; border-radius:10px; margin-bottom:8px;}
+  @media (max-width:640px){ .event-item{grid-template-columns:62px 1px 1fr; gap:14px;} .event-date .day{font-size:1.5rem;} .event-controls{position:static; margin-top:10px;} .event-photos img{height:120px;} }
 
   /* ---------- WORKSHOPS ---------- */
   .workshops{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px;}
-  .workshop{background:var(--card); border:1px solid var(--line); padding:24px; position:relative; display:flex; flex-direction:column; gap:8px;}
-  .workshop h3{font-size:1.15rem;}
-  .workshop .meta{font-size:0.84rem; color:var(--gold);}
+  .workshop{background:var(--paper); border:1px solid var(--line); padding:24px; position:relative; display:flex; flex-direction:column; gap:8px;}
+  .workshop h3{font-size:1.2rem;}
+  .workshop .meta{font-size:0.84rem; color:var(--gold-dark);}
   .workshop p{margin:0; color:var(--ink-soft); font-size:0.94rem; flex:1;}
-  .workshop .btn{align-self:flex-start; margin-top:6px;}
 
   /* ---------- BIO ---------- */
   .bio-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:56px; align-items:start;}
-  .bio-quote{font-family:var(--font-display); font-style:italic; font-size:1.5rem; line-height:1.35; color:var(--blue-deep);}
-  .bio-body p{margin:0 0 16px; color:var(--ink-soft); max-width:62ch;}
+  .bio-quote{font-family:var(--font-display); font-style:italic; font-weight:300; font-size:clamp(26px, 3vw, 36px); line-height:1.3; color:var(--navy);}
+  .bio-body p{margin:0 0 16px; color:var(--ink-soft); max-width:62ch; font-size:17px;}
   @media (max-width:840px){ .bio-grid{grid-template-columns:1fr; gap:20px;} }
 
   /* ---------- CONTACT ---------- */
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
-  .contact-lead{font-family:var(--font-display); font-size:1.5rem; line-height:1.35; margin:0 0 14px;}
-  .contact-grid p{color:var(--ink-soft); margin:0 0 20px;}
-  .contact-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
-  .contact-list a,.contact-list button{display:flex; align-items:center; gap:14px; text-decoration:none; padding:14px 16px; background:var(--card); border:1px solid var(--line); color:var(--ink); width:100%; font-size:0.96rem; text-align:left; word-break:break-word;}
-  .contact-list a:hover,.contact-list button:hover{border-color:var(--blue); color:var(--blue);}
-  .contact-list svg{width:20px; height:20px; flex:none; color:var(--gold);}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:40px 96px; align-items:flex-start;}
+  .contact-grid > div{flex:1 1 360px; min-width:0;}
+  .contact-sign{font-family:var(--font-sign); font-size:64px; line-height:0.9; color:var(--navy); display:block;}
+  .contact-lead{font-size:clamp(30px, 3.4vw, 44px); line-height:1.15; margin:14px 0 16px;}
+  .contact-grid p{margin:0; color:var(--ink-soft); font-size:17px; max-width:44ch;}
+  .contact-list{flex:1 1 360px; min-width:0; list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .contact-list a,.contact-list button{display:flex; align-items:center; gap:16px; min-height:64px; padding:10px 22px; background:var(--paper); border:1px solid var(--line); color:var(--ink); width:100%; text-decoration:none; font-size:16px; text-align:left; word-break:break-word;}
+  .contact-list a:hover,.contact-list button:hover{border-color:var(--navy); color:var(--navy);}
+  .contact-list svg{width:22px; height:22px; flex:none; color:var(--gold-dark);}
   .contact-list small{display:block; font-size:0.76rem; color:var(--ink-soft);}
-  @media (max-width:840px){ .contact-grid{grid-template-columns:1fr; gap:24px;} }
 
-  footer{border-top:1px solid var(--line); padding:30px 0 90px; font-size:0.85rem; color:var(--ink-soft);}
-  .footer-inner{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  footer{background:var(--navy); color:var(--cream-soft); padding:36px var(--pad-x) 96px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 32px; font-size:13px;}
+  footer .sign{font-family:var(--font-sign); font-size:36px; color:var(--cream); line-height:1;}
 
   /* ---------- LIGHTBOX ---------- */
-  .lightbox{position:fixed; inset:0; z-index:200; background:rgba(18,15,12,0.95); display:grid; grid-template-columns:1fr 340px; color:#EFE9DC;}
+  .lightbox{position:fixed; inset:0; z-index:200; background:rgba(14,12,10,0.96); display:grid; grid-template-columns:1fr 360px; color:#EFE9DC;}
   .lightbox.simple{grid-template-columns:1fr;}
   .lightbox.simple .lb-info{display:none;}
   .lb-stage{position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; touch-action:pan-y pinch-zoom; min-height:0;}
@@ -275,75 +295,70 @@
   .lb-close{top:14px; right:14px;}
   .lb-counter{position:absolute; left:18px; top:20px; font-size:0.8rem; opacity:0.7; z-index:3;}
   .lb-hint{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); font-size:0.75rem; opacity:0.55; white-space:nowrap;}
-  .lb-info{background:#1E1A16; padding:60px 28px 28px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;}
-  .lb-info h3{font-size:1.5rem; color:#fff; line-height:1.2;}
-  .lb-info .sub{font-size:0.86rem; opacity:0.75;}
-  .lb-info p{margin:0; font-size:0.95rem; line-height:1.65; opacity:0.88;}
-  .lb-price{font-family:var(--font-display); font-size:1.3rem; color:#E7C27D;}
+  .lb-info{background:var(--navy); padding:64px 30px 30px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;}
+  .lb-info h3{font-size:1.6rem; color:#fff; line-height:1.2;}
+  .lb-info .sub{font-size:0.86rem; opacity:0.8;}
+  .lb-info p{margin:0; font-size:0.96rem; line-height:1.7; opacity:0.9;}
+  .lb-price{font-family:var(--font-display); font-size:1.3rem; color:var(--gold);}
   .lb-process{display:flex; gap:8px; flex-wrap:wrap;}
-  .lb-process button{padding:0; border:2px solid transparent; background:none; border-radius:2px;}
-  .lb-process button.active{border-color:#E7C27D;}
-  .lb-process img{width:56px; height:56px; object-fit:cover; display:block;}
-  .lb-info .btn-primary{background:#E7C27D; color:#1E1A16; align-self:flex-start;}
-  .lb-info .btn-primary:hover{background:#F1D49E;}
+  .lb-process button{padding:0; border:2px solid transparent; background:none;}
+  .lb-process button.active{border-color:var(--gold);}
+  .lb-process img{width:56px; height:56px; object-fit:cover;}
+  .lb-info .btn-gold{align-self:flex-start;}
   @media (max-width:840px){
     .lightbox{grid-template-columns:1fr; grid-template-rows:minmax(0,58vh) auto; overflow-y:auto;}
     .lb-stage img{max-width:100%; max-height:100%;}
     .lb-prev,.lb-next{top:auto; bottom:12px; transform:none; width:40px; height:40px;}
     .lb-hint{display:none;}
-    .lb-info{padding:20px 18px 40px;}
+    .lb-info{padding:22px 18px 40px;}
   }
 
   /* ---------- MODAL (edición) ---------- */
   .modal-overlay{position:fixed; inset:0; background:rgba(24,20,15,0.55); z-index:250; display:flex; align-items:center; justify-content:center; padding:16px;}
-  .modal-box{background:var(--white); max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding:30px; border-radius:6px; position:relative;}
+  .modal-box{background:var(--paper); max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding:30px; border-radius:4px; position:relative;}
   .modal-close{position:absolute; top:14px; right:14px; background:none; border:none; color:var(--ink-soft); width:32px; height:32px;}
   .modal-close svg{width:16px; height:16px;}
-  .modal-box h3{font-size:1.35rem; margin-bottom:18px; padding-right:28px;}
+  .modal-box h3{font-size:1.4rem; margin-bottom:18px; padding-right:28px;}
   .field{margin-bottom:14px;}
   .field label{display:block; font-size:0.8rem; color:var(--ink-soft); margin-bottom:5px;}
   .field-row{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   @media (max-width:520px){ .field-row{grid-template-columns:1fr;} .modal-box{padding:22px 18px;} }
-  .field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=date],.field input[type=url],.field input[type=password],.field input[type=number],.field select,.field textarea{
-    width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:3px; font-family:var(--font-body); font-size:0.94rem; background:var(--bg); color:var(--ink);
-  }
+  .field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=date],.field input[type=url],.field input[type=password],.field input[type=number],.field select,.field textarea{width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:3px; font-family:var(--font-body); font-size:0.94rem; background:var(--bg); color:var(--ink);}
   .field textarea{min-height:84px; resize:vertical;}
   .field-hint{font-size:0.75rem; color:var(--ink-soft); margin-top:4px;}
-  .field-check{display:flex; align-items:center; gap:8px; font-size:0.9rem;}
+  .field-check{display:flex !important; align-items:center; gap:8px; font-size:0.9rem !important; color:var(--ink) !important;}
   .upload-row{display:flex; gap:8px; align-items:center; margin-top:6px; flex-wrap:wrap;}
-  .upload-btn{display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; padding:7px 12px; border:1px dashed var(--blue); color:var(--blue); border-radius:3px; cursor:pointer; background:none;}
+  .upload-btn{display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; padding:7px 12px; border:1px dashed var(--navy); color:var(--navy); border-radius:3px; cursor:pointer;}
   .upload-btn input{display:none;}
   .upload-status{font-size:0.78rem; color:var(--ink-soft);}
-  .form-legend{font-family:var(--font-display); font-size:1rem; margin:20px 0 10px; padding-top:14px; border-top:1px solid var(--line);}
+  .form-legend{font-family:var(--font-display); font-size:1.05rem; margin:20px 0 10px; padding-top:14px; border-top:1px solid var(--line);}
   .modal-actions{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;}
-  .modal-actions .btn{border:none;}
   .link-btn{background:none; border:none; color:var(--danger); font-size:0.85rem; text-decoration:underline; padding:0;}
   .modal-error{color:var(--danger); font-size:0.85rem; margin-top:6px;}
-
-  .toast{position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--blue-deep); color:var(--white); padding:12px 20px; border-radius:24px; font-size:0.88rem; z-index:300; opacity:0; transition:opacity .3s, transform .3s; pointer-events:none; max-width:calc(100vw - 32px); text-align:center;}
+  .toast{position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--navy); color:var(--cream); padding:12px 20px; border-radius:24px; font-size:0.88rem; z-index:300; opacity:0; transition:opacity .3s, transform .3s; pointer-events:none; max-width:calc(100vw - 32px); text-align:center;}
   .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
-  .setup-banner{background:var(--gold); color:var(--white); text-align:center; padding:9px 16px; font-size:0.82rem;}
+  .setup-banner{background:var(--gold); color:var(--navy); text-align:center; padding:9px 16px; font-size:0.82rem;}
 
   /* ---------- CHAT ---------- */
-  .chat-fab{position:fixed; bottom:22px; right:22px; z-index:150; width:56px; height:56px; border-radius:50%; border:none; background:var(--blue); color:var(--white); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px -8px rgba(24,20,15,0.45); transition:opacity .3s, transform .3s;}
+  .chat-fab{position:fixed; bottom:22px; right:22px; z-index:150; width:58px; height:58px; border-radius:50%; border:none; background:var(--gold); color:var(--navy); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px -8px rgba(24,20,15,0.5); transition:opacity .3s, transform .3s;}
   .chat-fab.off{opacity:0; transform:translateY(16px) scale(.9); pointer-events:none;}
-  .chat-fab:hover{background:var(--blue-deep);}
+  .chat-fab:hover{background:#E2B872;}
   .chat-fab svg{width:24px; height:24px;}
-  .chat-panel{position:fixed; bottom:90px; right:22px; z-index:160; width:min(350px, calc(100vw - 32px)); max-height:min(500px, calc(100vh - 120px)); background:var(--white); border-radius:10px; overflow:hidden; box-shadow:0 20px 50px -12px rgba(24,20,15,0.5); display:flex; flex-direction:column;}
-  .chat-header{background:var(--blue); color:var(--white); padding:14px 16px; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-display); font-size:1.05rem;}
-  .chat-header button{background:none; border:none; color:var(--white); display:flex;}
+  .chat-panel{position:fixed; bottom:92px; right:22px; z-index:160; width:min(350px, calc(100vw - 32px)); max-height:min(500px, calc(100vh - 120px)); background:var(--paper); border-radius:10px; overflow:hidden; box-shadow:0 20px 50px -12px rgba(24,20,15,0.5); display:flex; flex-direction:column;}
+  .chat-header{background:var(--navy); color:var(--cream); padding:14px 16px; display:flex; align-items:center; justify-content:space-between; font-family:var(--font-display); font-size:1.05rem;}
+  .chat-header button{background:none; border:none; color:var(--cream); display:flex;}
   .chat-header svg{width:16px; height:16px;}
   .chat-intro{display:flex; gap:8px; padding:10px 12px; border-bottom:1px solid var(--line); background:var(--bg);}
-  .chat-intro input{flex:1; min-width:0; padding:8px 9px; border:1px solid var(--line); border-radius:4px; font-family:var(--font-body); font-size:0.84rem; background:var(--white); color:var(--ink);}
+  .chat-intro input{flex:1; min-width:0; padding:8px 9px; border:1px solid var(--line); border-radius:4px; font-family:var(--font-body); font-size:0.84rem; background:var(--paper); color:var(--ink);}
   .chat-messages{flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:10px; min-height:120px;}
   .chat-bubble{max-width:85%; padding:9px 13px; border-radius:14px; font-size:0.88rem; line-height:1.4;}
   .chat-bubble.system{background:var(--bg-alt); align-self:flex-start; border-bottom-left-radius:3px;}
-  .chat-bubble.visitor{background:var(--blue); color:var(--white); align-self:flex-end; border-bottom-right-radius:3px;}
+  .chat-bubble.visitor{background:var(--navy); color:var(--cream); align-self:flex-end; border-bottom-right-radius:3px;}
   .chat-input-row{display:flex; gap:8px; padding:12px; border-top:1px solid var(--line);}
   .chat-input-row textarea{flex:1; min-width:0; padding:9px 12px; border:1px solid var(--line); border-radius:18px; font-family:var(--font-body); font-size:0.88rem; background:var(--bg); color:var(--ink); resize:none; height:40px; max-height:110px;}
-  .chat-input-row button{width:40px; height:40px; border-radius:50%; border:none; background:var(--blue); color:var(--white); display:flex; align-items:center; justify-content:center; flex:none;}
+  .chat-input-row button{width:40px; height:40px; border-radius:50%; border:none; background:var(--navy); color:var(--cream); display:flex; align-items:center; justify-content:center; flex:none;}
   .chat-input-row svg{width:16px; height:16px;}
-  @media (max-width:480px){ .chat-panel{right:16px; bottom:84px;} .chat-fab{right:16px; bottom:16px;} }
+  @media (max-width:480px){ .chat-panel{right:16px; bottom:86px;} .chat-fab{right:16px; bottom:16px;} }
 </style>
 </head>
 <body>
@@ -351,15 +366,19 @@
 
   <header class="site-nav" id="siteNav">
     <div class="nav-inner">
-      <a href="#inicio" class="wordmark">Art by Anna Perepelkina</a>
+      <a href="#inicio" class="wordmark" aria-label="Art by Anna Perepelkina">
+        <span class="sign">Anna Perepelkina</span>
+        <span class="sub">Art · Valencia</span>
+      </a>
       <nav aria-label="Principal">
         <ul class="nav-links" id="navLinks">
-          <li><a href="#galeria" data-i18n="nav.gallery">Galería</a></li>
-          <li><a href="#obras" data-i18n="nav.sale">Obras en venta</a></li>
+          <li><a href="#galeria" data-i18n="nav.gallery">Colección</a></li>
+          <li id="navNatural"><a href="#natural" data-i18n="nav.natural">Del natural al lienzo</a></li>
+          <li><a href="#obras" data-i18n="nav.sale">Obras disponibles</a></li>
           <li><a href="#encargos" data-i18n="nav.commissions">Encargos</a></li>
           <li class="hidden" id="navWorkshops"><a href="#talleres" data-i18n="nav.workshops">Talleres</a></li>
-          <li><a href="#eventos" data-i18n="nav.events">Eventos</a></li>
-          <li><a href="#biografia" data-i18n="nav.bio">Biografía</a></li>
+          <li class="hidden" id="navEvents"><a href="#eventos" data-i18n="nav.events">Eventos</a></li>
+          <li><a href="#biografia" data-i18n="nav.bio">Sobre Anna</a></li>
           <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
@@ -375,120 +394,181 @@
   </header>
 
   <main>
-    <section id="inicio" class="hero">
-      <div class="hero-photo-box">
-        <img src="anna-estudio.webp" width="1306" height="1205" alt="Anna Perepelkina pintando en su estudio" fetchpriority="high">
-      </div>
+    <!-- ===== PORTADA ===== -->
+    <section id="inicio" class="hero navy">
       <div class="hero-text">
-        <span class="hero-eyebrow" id="heroTagline">Pintura, luz y color</span>
-        <h1>Anna Perepelkina</h1>
-        <div class="hero-name-sub" data-i18n="hero.sub">Bellas Artes · Estudio · Valencia</div>
-        <div class="hero-name-role">Painter</div>
+        <span class="eyebrow" id="heroTagline">Pintura, luz y color</span>
+        <h1>Anna<br>Perepelkina</h1>
+        <div class="hero-sub" data-i18n="hero.sub">Bellas Artes · Estudio · Valencia</div>
+        <div class="hero-role">Painter</div>
         <p class="hero-tagline" data-i18n="hero.tagline">Cada obra nace en el lienzo, pincelada a pincelada, en un diálogo entre la luz y los colores para captar las emociones.</p>
         <div class="hero-cta">
-          <a href="#galeria" class="btn btn-primary" data-i18n="hero.cta1">Ver galería</a>
-          <a href="#obras" class="btn btn-ghost" data-i18n="hero.cta2">Obras en venta</a>
+          <a href="#galeria" class="btn btn-gold" data-i18n="hero.cta1">Ver la colección</a>
+          <a href="#encargos" class="btn btn-line-light" data-i18n="hero.cta2">Encargar una obra</a>
         </div>
+      </div>
+      <div class="hero-photo">
+        <img src="anna-estudio.webp" width="1306" height="1205" alt="Anna Perepelkina pintando en su estudio" fetchpriority="high">
       </div>
     </section>
 
-    <section id="galeria" class="section-pad">
+    <div class="texture" aria-hidden="true"><img src="textura-cielo.webp" alt="" loading="lazy"></div>
+
+    <!-- ===== COLECCIÓN ===== -->
+    <section id="galeria" class="pad">
       <div class="wrap">
         <div class="section-head">
-          <h2 data-i18n="gallery.title">Galería</h2>
-          <button class="add-btn" data-action="add-work"></button>
+          <div>
+            <span class="eyebrow" data-i18n="gallery.eyebrow">Colección</span>
+            <h2 class="section-title" data-i18n="gallery.title">La luz de los paisajes valencianos</h2>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:flex-start; gap:14px;">
+            <p class="section-intro" data-i18n="gallery.intro">Óleos y acrílicos pintados frente al motivo real. Pulsa cualquier obra para verla en grande y acercarte a la pincelada.</p>
+            <button class="add-btn" data-action="add-work"></button>
+          </div>
         </div>
-        <p class="section-intro" data-i18n="gallery.intro">Pulsa sobre cualquier obra para verla en grande, ampliar los detalles de la pincelada y conocer su historia.</p>
-        <div id="galleryGrid" class="gallery-masonry"></div>
+        <div id="galleryGrid" class="gallery-hang"></div>
 
-        <div id="mapBlock">
-          <h3 class="sub-head" data-i18n="map.title">Dónde nace cada cuadro</h3>
-          <p class="section-intro" style="margin-top:0" data-i18n="map.intro">Anna pinta al aire libre, frente al paisaje real. Cada punto del mapa es un lugar donde ha plantado su caballete.</p>
+        <div id="mapBlock" class="map-block">
+          <span class="eyebrow" data-i18n="map.eyebrow">Mapa</span>
+          <h3 data-i18n="map.title">Dónde nace cada cuadro</h3>
+          <p class="section-intro" style="max-width:62ch" data-i18n="map.intro">Anna pinta al aire libre, frente al paisaje real. Cada punto del mapa es un lugar donde ha plantado su caballete.</p>
           <div id="artMap" role="region" aria-label="Mapa"></div>
         </div>
       </div>
     </section>
 
-    <section id="obras" class="section-pad alt">
-      <div class="wrap">
-        <div class="section-head"><h2 data-i18n="sale.title">Obras en venta</h2></div>
-        <p class="section-intro" data-i18n="sale.intro">Obras originales, firmadas por la artista. Pregunta por cualquiera de ellas y te responderemos con todos los detalles.</p>
-        <div id="saleList" class="sale-list"></div>
-      </div>
+    <!-- ===== CITA ===== -->
+    <section class="quote navy" aria-label="Cita">
+      <figure>
+        <svg width="48" height="36" viewBox="0 0 48 36" fill="none" aria-hidden="true"><path d="M0 36V20C0 9 6 2 18 0l2 5C13 7 10 11 10 17h9v19H0Zm28 0V20C28 9 34 2 46 0l2 5c-7 2-10 6-10 12h9v19H28Z" fill="#D3A55A"/></svg>
+        <blockquote data-i18n="quote.text">Concibo cada nuevo lienzo como una oportunidad de jugar con la imaginación y crecer artísticamente.</blockquote>
+        <figcaption>Anna Perepelkina</figcaption>
+      </figure>
     </section>
 
-    <section id="encargos" class="section-pad">
-      <div class="wrap">
-        <div class="section-head"><h2 data-i18n="com.title">Encargos</h2></div>
-        <p class="section-intro" data-i18n="com.intro">¿Tienes un lugar especial, una casa, un paisaje o un recuerdo que te gustaría ver convertido en cuadro? Anna acepta encargos.</p>
-        <div class="steps">
-          <div class="step"><h3 data-i18n="com.s1t">Cuéntame tu idea</h3><p data-i18n="com.s1">Un lugar, una fotografía, un recuerdo. Cuanto más me cuentes, mejor.</p></div>
-          <div class="step"><h3 data-i18n="com.s2t">Elegimos el formato</h3><p data-i18n="com.s2">Tamaño, técnica (óleo o acrílico) y el estilo que más te guste de la galería.</p></div>
-          <div class="step"><h3 data-i18n="com.s3t">Presupuesto y plazo</h3><p data-i18n="com.s3">Recibes un presupuesto sin compromiso y una fecha aproximada de entrega.</p></div>
-          <div class="step"><h3 data-i18n="com.s4t">Tu obra original</h3><p data-i18n="com.s4">Pintada a mano y firmada por la artista, lista para colgar o regalar.</p></div>
-        </div>
-        <div class="commission-cta">
-          <button class="btn btn-primary" type="button" data-action="chat-commission" data-i18n="com.cta">Pedir presupuesto</button>
-          <p><span data-i18n="com.or">o escribe a</span> <a href="mailto:bellasartesanna@gmail.com" class="mail-link" style="color:var(--blue)">bellasartesanna@gmail.com</a></p>
-        </div>
-      </div>
-    </section>
-
-    <section id="talleres" class="section-pad alt hidden">
+    <!-- ===== DEL NATURAL AL LIENZO ===== -->
+    <section id="natural" class="pad" style="background:var(--bg-alt)">
       <div class="wrap">
         <div class="section-head">
-          <h2 data-i18n="ws.title">Talleres de pintura</h2>
-          <button class="add-btn" data-action="add-workshop"></button>
+          <div>
+            <span class="eyebrow">Plein air</span>
+            <h2 class="section-title" data-i18n="nat.title">Del natural al lienzo</h2>
+          </div>
+          <p class="section-intro" data-i18n="nat.intro">Anna planta su caballete frente al paisaje real. Elige un lugar y compara la escena con el cuadro terminado.</p>
         </div>
-        <p class="section-intro" data-i18n="ws.intro">Aprende a pintar al aire libre con Anna: observar la luz, mezclar el color y capturar el paisaje del natural.</p>
+        <div class="tabs" role="tablist" aria-label="Lugares" id="natTabs"></div>
+        <div class="diptych" id="natPanel"></div>
+      </div>
+    </section>
+
+    <!-- ===== OBRA DESTACADA ===== -->
+    <section id="destacada" class="pad">
+      <div class="wrap featured" id="featuredBox"></div>
+    </section>
+
+    <div class="texture" aria-hidden="true"><img src="textura-mar.webp" alt="" loading="lazy"></div>
+
+    <!-- ===== OBRAS DISPONIBLES ===== -->
+    <section id="obras" class="pad">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="sale.eyebrow">Obras disponibles</span>
+            <h2 class="section-title" data-i18n="sale.title">Originales firmados</h2>
+          </div>
+          <a href="#galeria" class="link-line" data-i18n="sale.all">Ver toda la colección</a>
+        </div>
+        <div id="saleList" class="sale-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== ENCARGOS ===== -->
+    <section id="encargos" class="pad navy">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="com.eyebrow">Encargos</span>
+        <h2 class="section-title" style="max-width:18ch; margin-bottom:18px" data-i18n="com.title">Tu lugar favorito, pintado a mano</h2>
+        <p class="section-intro" style="max-width:52ch; margin-bottom:56px; font-size:17px" data-i18n="com.intro">Una casa, un rincón del pueblo, un paisaje que significa algo para ti. Anna lo convierte en una obra original.</p>
+        <ol class="steps">
+          <li><span class="n">01</span><h3 data-i18n="com.s1t">Cuéntame tu idea</h3><p data-i18n="com.s1">Un lugar, una fotografía, un recuerdo. Cuanto más me cuentes, mejor.</p></li>
+          <li><span class="n">02</span><h3 data-i18n="com.s2t">Elegimos el formato</h3><p data-i18n="com.s2">Tamaño, técnica (óleo o acrílico) y el estilo que más te guste.</p></li>
+          <li><span class="n">03</span><h3 data-i18n="com.s3t">Presupuesto y plazo</h3><p data-i18n="com.s3">Sin compromiso, con una fecha aproximada de entrega.</p></li>
+          <li><span class="n">04</span><h3 data-i18n="com.s4t">Tu obra original</h3><p data-i18n="com.s4">Pintada a mano y firmada por la artista, lista para colgar o regalar.</p></li>
+        </ol>
+        <div class="commission-cta">
+          <button class="btn btn-gold" type="button" data-action="chat-commission" data-i18n="com.cta">Pedir presupuesto</button>
+          <p><span data-i18n="com.or">o escribe a</span> <a href="mailto:bellasartesanna@gmail.com" class="mail-link">bellasartesanna@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TALLERES ===== -->
+    <section id="talleres" class="pad hidden" style="background:var(--bg-alt)">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="ws.eyebrow">Talleres</span>
+            <h2 class="section-title" data-i18n="ws.title">Pinta al aire libre con Anna</h2>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:flex-start; gap:14px;">
+            <p class="section-intro" data-i18n="ws.intro">Aprende a observar la luz, mezclar el color y capturar el paisaje del natural.</p>
+            <button class="add-btn" data-action="add-workshop"></button>
+          </div>
+        </div>
         <div id="workshopsList" class="workshops"></div>
       </div>
     </section>
 
-    <section id="eventos" class="section-pad">
+    <!-- ===== EVENTOS ===== -->
+    <section id="eventos" class="pad hidden">
       <div class="wrap">
         <div class="section-head">
-          <h2 data-i18n="ev.title">Eventos</h2>
+          <div>
+            <span class="eyebrow" data-i18n="ev.eyebrow">Agenda</span>
+            <h2 class="section-title" data-i18n="ev.title">Eventos</h2>
+          </div>
           <button class="add-btn" data-action="add-event"></button>
         </div>
         <div id="upcomingBlock" class="hidden">
-          <h3 class="sub-head" style="margin-top:0" data-i18n="ev.upcoming">Próximos eventos</h3>
-          <div id="upcomingList" class="events-list" style="margin-top:18px"></div>
-          <h3 class="sub-head" data-i18n="ev.past">Eventos anteriores</h3>
+          <h3 style="font-size:1.4rem; margin-bottom:18px" data-i18n="ev.upcoming">Próximos eventos</h3>
+          <div id="upcomingList" class="events-list"></div>
+          <h3 style="font-size:1.4rem; margin:48px 0 6px" id="pastTitle" data-i18n="ev.past">Otras sesiones de pintura</h3>
         </div>
         <div id="eventsList" class="events-list"></div>
       </div>
     </section>
 
-    <section id="biografia" class="section-pad alt">
+    <!-- ===== SOBRE ANNA ===== -->
+    <section id="biografia" class="pad" style="background:var(--bg-alt)">
       <div class="wrap">
         <div class="section-head">
-          <h2 data-i18n="bio.title">Biografía</h2>
+          <div>
+            <span class="eyebrow" data-i18n="bio.eyebrow">Biografía</span>
+            <h2 class="section-title" data-i18n="bio.title">Sobre Anna</h2>
+          </div>
           <button class="add-btn" data-action="edit-bio"></button>
         </div>
         <div id="bioContent" class="bio-grid"></div>
       </div>
     </section>
 
-    <section id="contacto" class="section-pad">
-      <div class="wrap">
-        <div class="section-head"><h2 data-i18n="ct.title">Contacto</h2></div>
-        <div class="contact-grid">
-          <div>
-            <p class="contact-lead" data-i18n="ct.lead">¿Te interesa una obra, un encargo o colaborar?</p>
-            <p data-i18n="ct.text">Escríbeme por el canal que prefieras. Respondo personalmente a cada mensaje.</p>
-          </div>
-          <ul class="contact-list" id="contactList"></ul>
+    <!-- ===== CONTACTO ===== -->
+    <section id="contacto" class="pad">
+      <div class="wrap contact-grid">
+        <div>
+          <span class="contact-sign" data-i18n="ct.sign">Hablamos</span>
+          <h2 class="contact-lead" data-i18n="ct.lead">¿Te interesa una obra, un encargo o colaborar?</h2>
+          <p data-i18n="ct.text">Escríbeme por el canal que prefieras. Respondo personalmente a cada mensaje.</p>
         </div>
+        <ul class="contact-list" id="contactList"></ul>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap footer-inner">
-      <div>© <span id="footerYear"></span> Anna Perepelkina · Art by Anna Perepelkina</div>
-      <div data-i18n="footer.place">Valencia, España</div>
-    </div>
+    <span class="sign">Anna Perepelkina</span>
+    <span data-i18n="hero.sub">Bellas Artes · Estudio · Valencia</span>
+    <span>© <span id="footerYear"></span> Art by Anna Perepelkina</span>
   </footer>
 
   <!-- Visor de obras -->
@@ -540,27 +620,27 @@
       "image": "obra-almendros-alcalali.webp", "thumb": "thumb-obra-almendros-alcalali.webp",
       "description_es": "Cada febrero, los almendros de Alcalalí, en la Marina Alta, se visten de blanco y rosa. El pueblo celebra esta floración efímera con su fiesta Feslalí, mientras el paisaje se funde con las montañas del interior valenciano.",
       "description_en": "Every February, the almond trees of Alcalalí, in the Marina Alta, dress themselves in white and pink. The village celebrates this fleeting bloom with its Feslalí festival, as the landscape merges with the mountains of the Valencian interior.",
-      "status": "consult", "price": "", "prints": false, "place": "Alcalalí", "lat": 38.7497, "lng": -0.0353, "process": [] },
+      "status": "consult", "price": "", "prints": false, "featured": false, "place": "Alcalalí", "lat": 38.7497, "lng": -0.0353, "process": [] },
     { "id": "seed-2", "title": "El Pi Redó de Guadassuar", "title_en": "The Pi Redó of Guadassuar", "year": "", "medium": "Óleo sobre lienzo", "size": "70 x 70 cm",
       "image": "obra-pi-redo-guadassuar.webp", "thumb": "thumb-obra-pi-redo-guadassuar.webp",
       "description_es": "En pleno invierno, el Pi Redó se alza solitario sobre la llanura de Guadassuar. Este pino centenario, que da nombre a la partida de tierra que lo rodea, es uno de los árboles monumentales y símbolos naturales del pueblo.",
       "description_en": "In the depths of winter, the Pi Redó stands alone over the plain of Guadassuar. This centuries-old pine, which lends its name to the stretch of land around it, is one of the town’s monumental trees and natural landmarks.",
-      "status": "consult", "price": "", "prints": false, "place": "Guadassuar", "lat": 39.1853, "lng": -0.4772, "process": [] },
-    { "id": "seed-3", "title": "Plaza de la Iglesia de Beniel", "title_en": "Church Square, Beniel", "year": "", "medium": "Óleo sobre lienzo", "size": "",
+      "status": "consult", "price": "", "prints": false, "featured": false, "place": "Guadassuar", "lat": 39.1853, "lng": -0.4772, "process": [] },
+    { "id": "seed-3", "title": "Plaza de la Iglesia de Beniel", "title_en": "Church Square, Beniel", "year": "2026", "medium": "Óleo sobre lienzo", "size": "",
       "image": "obra-plaza-iglesia-beniel.webp", "thumb": "thumb-obra-plaza-iglesia-beniel.webp",
       "description_es": "En el corazón de Beniel, frente a su iglesia, se abre esta plaza serena. El pueblo fue frontera medieval entre los reinos de Murcia y Valencia, y aún conserva los mojones de piedra del siglo XV que marcaban aquella línea entre dos coronas.",
       "description_en": "In the heart of Beniel, facing its church, this quiet square opens up. The town was once a medieval frontier between the kingdoms of Murcia and Valencia, and it still keeps the 15th-century stone boundary markers that once traced that line between two crowns.",
-      "status": "consult", "price": "", "prints": false, "place": "Beniel", "lat": 38.0464, "lng": -1.0016, "process": [] },
+      "status": "consult", "price": "", "prints": false, "featured": true, "place": "Beniel", "lat": 38.0464, "lng": -1.0016, "process": [] },
     { "id": "seed-4", "title": "Amanecer en la playa de Alboraya", "title_en": "Sunrise on Alboraya beach", "year": "", "medium": "Acrílico sobre lienzo", "size": "",
       "image": "obra-amanecer-alboraya.webp", "thumb": "thumb-obra-amanecer-alboraya.webp",
       "description_es": "Julio, primera luz del día en la playa de la Patacona, en Alboraya. Con la arena dorada y el paseo marítimo aún en calma, una gaviota se convierte en la protagonista de este amanecer junto al Mediterráneo.",
       "description_en": "July, first light on Patacona beach, in Alboraya. With the golden sand and the seafront promenade still quiet, a seagull becomes the protagonist of this Mediterranean sunrise.",
-      "status": "consult", "price": "", "prints": false, "place": "Alboraya", "lat": 39.4919, "lng": -0.3239, "process": [] },
+      "status": "consult", "price": "", "prints": false, "featured": false, "place": "Alboraya", "lat": 39.4919, "lng": -0.3239, "process": [] },
     { "id": "seed-5", "title": "Calle Marqués de Campo, Dénia", "title_en": "Marqués de Campo Street, Dénia", "year": "", "medium": "Acrílico sobre lienzo", "size": "",
       "image": "obra-marques-de-campo-denia.webp", "thumb": "thumb-obra-marques-de-campo-denia.webp",
       "description_es": "La calle Marqués de Campo es el corazón comercial y social de Dénia, la arteria que desde finales del siglo XIX conecta el centro con el mar. Bajo sus plataneros, este rincón capta el bullicio tranquilo de una mañana de verano.",
       "description_en": "Marqués de Campo Street is the commercial and social heart of Dénia, the artery that has connected the town centre with the sea since the late 19th century. Beneath its plane trees, this corner captures the quiet bustle of a summer morning.",
-      "status": "consult", "price": "", "prints": false, "place": "Dénia", "lat": 38.8405, "lng": 0.1066, "process": [] }
+      "status": "consult", "price": "", "prints": false, "featured": false, "place": "Dénia", "lat": 38.8405, "lng": 0.1066, "process": [] }
   ],
   "events": [
     { "id": "event-1", "title": "Pintando el Pi Redó de Guadassuar", "title_en": "Painting the Pi Redó in Guadassuar", "date": "2026-01-17", "location": "Guadassuar",
@@ -590,7 +670,7 @@
 
 <script>
 /* ======================================================================
-   CONFIGURACIÓN — pega aquí tus datos (ver la guía de publicación)
+   CONFIGURACIÓN
    ====================================================================== */
 const SUPABASE_URL = 'https://eumyhmcvwzwniiyajosh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_lYJq6COmJiM08yGLlwT02Q_-y4bgkBm';
@@ -606,49 +686,55 @@ const CONTACT_EMAIL = 'bellasartesanna@gmail.com';
 /* ---------------- TEXTOS ES / EN ---------------- */
 const I18N = {
   es: {
-    'nav.gallery':'Galería','nav.sale':'Obras en venta','nav.commissions':'Encargos','nav.workshops':'Talleres','nav.events':'Eventos','nav.bio':'Biografía','nav.contact':'Contacto',
-    'hero.sub':'Bellas Artes · Estudio · Valencia','hero.tagline':'Cada obra nace en el lienzo, pincelada a pincelada, en un diálogo entre la luz y los colores para captar las emociones.','hero.cta1':'Ver galería','hero.cta2':'Obras en venta',
-    'gallery.title':'Galería','gallery.intro':'Pulsa sobre cualquier obra para verla en grande, ampliar los detalles de la pincelada y conocer su historia.','gallery.empty':'Próximamente, nuevas obras.',
-    'map.title':'Dónde nace cada cuadro','map.intro':'Anna pinta al aire libre, frente al paisaje real. Cada punto del mapa es un lugar donde ha plantado su caballete.',
-    'sale.title':'Obras en venta','sale.intro':'Obras originales, firmadas por la artista. Pregunta por cualquiera de ellas y te responderemos con todos los detalles.','sale.empty':'Ahora mismo no hay obras disponibles. Se aceptan encargos.','sale.interest':'Me interesa',
+    'nav.gallery':'Colección','nav.natural':'Del natural al lienzo','nav.sale':'Obras disponibles','nav.commissions':'Encargos','nav.workshops':'Talleres','nav.events':'Eventos','nav.bio':'Sobre Anna','nav.contact':'Contacto',
+    'hero.sub':'Bellas Artes · Estudio · Valencia','hero.tagline':'Cada obra nace en el lienzo, pincelada a pincelada, en un diálogo entre la luz y los colores para captar las emociones.','hero.cta1':'Ver la colección','hero.cta2':'Encargar una obra',
+    'gallery.eyebrow':'Colección','gallery.title':'La luz de los paisajes valencianos','gallery.intro':'Óleos y acrílicos pintados frente al motivo real. Pulsa cualquier obra para verla en grande y acercarte a la pincelada.','gallery.empty':'Próximamente, nuevas obras.',
+    'map.eyebrow':'Mapa','map.title':'Dónde nace cada cuadro','map.intro':'Anna pinta al aire libre, frente al paisaje real. Cada punto del mapa es un lugar donde ha plantado su caballete.',
+    'quote.text':'Concibo cada nuevo lienzo como una oportunidad de jugar con la imaginación y crecer artísticamente.',
+    'nat.title':'Del natural al lienzo','nat.intro':'Anna planta su caballete frente al paisaje real. Elige un lugar y compara la escena con el cuadro terminado.','nat.place':'En el lugar','nat.canvas':'En el lienzo','nat.see':'Ver la obra',
+    'feat.eyebrow':'Obra destacada','feat.interest':'Me interesa esta obra',
+    'sale.eyebrow':'Obras disponibles','sale.title':'Originales firmados','sale.all':'Ver toda la colección','sale.empty':'Ahora mismo no hay obras disponibles. Se aceptan encargos.','sale.interest':'Consultar',
     'status.available':'Disponible','status.consult':'Precio a consultar','status.sold':'Vendida','status.prints':'Lámina disponible',
-    'com.title':'Encargos','com.intro':'¿Tienes un lugar especial, una casa, un paisaje o un recuerdo que te gustaría ver convertido en cuadro? Anna acepta encargos.',
+    'com.eyebrow':'Encargos','com.title':'Tu lugar favorito, pintado a mano','com.intro':'Una casa, un rincón del pueblo, un paisaje que significa algo para ti. Anna lo convierte en una obra original.',
     'com.s1t':'Cuéntame tu idea','com.s1':'Un lugar, una fotografía, un recuerdo. Cuanto más me cuentes, mejor.',
-    'com.s2t':'Elegimos el formato','com.s2':'Tamaño, técnica (óleo o acrílico) y el estilo que más te guste de la galería.',
-    'com.s3t':'Presupuesto y plazo','com.s3':'Recibes un presupuesto sin compromiso y una fecha aproximada de entrega.',
+    'com.s2t':'Elegimos el formato','com.s2':'Tamaño, técnica (óleo o acrílico) y el estilo que más te guste.',
+    'com.s3t':'Presupuesto y plazo','com.s3':'Sin compromiso, con una fecha aproximada de entrega.',
     'com.s4t':'Tu obra original','com.s4':'Pintada a mano y firmada por la artista, lista para colgar o regalar.',
     'com.cta':'Pedir presupuesto','com.or':'o escribe a','com.msg':'Hola Anna, me gustaría encargarte una obra. Te cuento mi idea: ',
-    'ws.title':'Talleres de pintura','ws.intro':'Aprende a pintar al aire libre con Anna: observar la luz, mezclar el color y capturar el paisaje del natural.','ws.book':'Reservar plaza','ws.spots':'plazas','ws.msg':'Hola Anna, me gustaría reservar plaza en el taller: ','ws.empty':'Aún no hay talleres publicados. Esta sección solo es visible para el público cuando añades alguno.',
-    'ev.title':'Eventos','ev.upcoming':'Próximos eventos','ev.past':'Eventos anteriores','ev.next':'Próximamente','ev.seeWork':'Ver la obra terminada','ev.empty':'Próximamente anunciaremos nuevos eventos y exposiciones.',
-    'bio.title':'Biografía','bio.empty':'Próximamente.',
-    'ct.title':'Contacto','ct.lead':'¿Te interesa una obra, un encargo o colaborar?','ct.text':'Escríbeme por el canal que prefieras. Respondo personalmente a cada mensaje.','ct.chat':'Abrir el chat','ct.chatSub':'Te respondo a tu email','ct.email':'Email','ct.wa':'WhatsApp','ct.ig':'Instagram','ct.phone':'Teléfono',
-    'footer.place':'Valencia, España',
+    'ws.eyebrow':'Talleres','ws.title':'Pinta al aire libre con Anna','ws.intro':'Aprende a observar la luz, mezclar el color y capturar el paisaje del natural.','ws.book':'Reservar plaza','ws.spots':'plazas','ws.msg':'Hola Anna, me gustaría reservar plaza en el taller: ','ws.empty':'Aún no hay talleres publicados. Esta sección solo es visible para el público cuando añades alguno.',
+    'ev.eyebrow':'Agenda','ev.title':'Eventos','ev.upcoming':'Próximos eventos','ev.past':'Otras sesiones de pintura','ev.next':'Próximamente','ev.seeWork':'Ver la obra terminada','ev.empty':'Aún no hay eventos.','ev.editHint':'En modo edición se muestran todos los eventos. Los que tienen obra relacionada y foto aparecen al público en «Del natural al lienzo».',
+    'bio.eyebrow':'Biografía','bio.title':'Sobre Anna','bio.empty':'Próximamente.',
+    'ct.sign':'Hablamos','ct.lead':'¿Te interesa una obra, un encargo o colaborar?','ct.text':'Escríbeme por el canal que prefieras. Respondo personalmente a cada mensaje.','ct.chat':'Abrir el chat','ct.chatSub':'Te respondo a tu email','ct.email':'Email','ct.wa':'WhatsApp','ct.ig':'Instagram','ct.phone':'Teléfono',
     'lb.hint':'Pulsa la imagen para ampliar · ← → para navegar','lb.process':'El proceso','lb.interest':'Me interesa esta obra','lb.interestMsg':'Hola Anna, me interesa la obra «{t}». ¿Podrías darme más información?','lb.prints':'También disponible como lámina.',
     'chat.title':'Escríbenos','chat.name':'Tu nombre','chat.email':'Tu email','chat.ph':'Escribe tu mensaje...','chat.hello':'¡Hola! Cuéntanos en qué podemos ayudarte y te responderemos a tu email.','chat.need':'Antes de enviar, indica tu nombre y tu email arriba para que podamos responderte.','chat.off':'El chat aún no está conectado. Mientras tanto, escríbenos a '+CONTACT_EMAIL+'.','chat.ok':'Gracias, tu mensaje se ha enviado. Te responderemos a tu email en breve.','chat.err':'No se ha podido enviar. Prueba de nuevo o escríbenos a '+CONTACT_EMAIL+'.',
     'edit.exit':'Salir de edición','months':['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],
+    'monthsLong':['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
     'medium':{}
   },
   en: {
-    'nav.gallery':'Gallery','nav.sale':'For sale','nav.commissions':'Commissions','nav.workshops':'Workshops','nav.events':'Events','nav.bio':'About','nav.contact':'Contact',
-    'hero.sub':'Fine Arts · Studio · Valencia','hero.tagline':'Each work is born on the canvas, brushstroke by brushstroke, in a dialogue between light and colour to capture emotions.','hero.cta1':'View gallery','hero.cta2':'Works for sale',
-    'gallery.title':'Gallery','gallery.intro':'Tap any painting to see it full size, zoom into the brushwork and read its story.','gallery.empty':'New works coming soon.',
-    'map.title':'Where each painting was born','map.intro':'Anna paints outdoors, in front of the real landscape. Each point on the map is a place where she set up her easel.',
-    'sale.title':'Works for sale','sale.intro':'Original works, signed by the artist. Ask about any of them and we will reply with all the details.','sale.empty':'No works are available right now. Commissions are welcome.','sale.interest':'I’m interested',
+    'nav.gallery':'Collection','nav.natural':'From life to canvas','nav.sale':'Available works','nav.commissions':'Commissions','nav.workshops':'Workshops','nav.events':'Events','nav.bio':'About Anna','nav.contact':'Contact',
+    'hero.sub':'Fine Arts · Studio · Valencia','hero.tagline':'Each work is born on the canvas, brushstroke by brushstroke, in a dialogue between light and colour to capture emotions.','hero.cta1':'View the collection','hero.cta2':'Commission a painting',
+    'gallery.eyebrow':'Collection','gallery.title':'The light of Valencian landscapes','gallery.intro':'Oils and acrylics painted in front of the real scene. Tap any painting to see it full size and get close to the brushwork.','gallery.empty':'New works coming soon.',
+    'map.eyebrow':'Map','map.title':'Where each painting was born','map.intro':'Anna paints outdoors, in front of the real landscape. Each point on the map is a place where she set up her easel.',
+    'quote.text':'I see every new canvas as a chance to play with imagination and grow as an artist.',
+    'nat.title':'From life to canvas','nat.intro':'Anna sets up her easel in front of the real landscape. Choose a place and compare the scene with the finished painting.','nat.place':'On location','nat.canvas':'On canvas','nat.see':'See the painting',
+    'feat.eyebrow':'Featured work','feat.interest':'I’m interested in this painting',
+    'sale.eyebrow':'Available works','sale.title':'Signed originals','sale.all':'See the whole collection','sale.empty':'No works are available right now. Commissions are welcome.','sale.interest':'Enquire',
     'status.available':'Available','status.consult':'Price on request','status.sold':'Sold','status.prints':'Print available',
-    'com.title':'Commissions','com.intro':'Is there a special place, a house, a landscape or a memory you would love to see as a painting? Anna accepts commissions.',
+    'com.eyebrow':'Commissions','com.title':'Your favourite place, painted by hand','com.intro':'A house, a corner of your town, a landscape that means something to you. Anna turns it into an original work.',
     'com.s1t':'Tell me your idea','com.s1':'A place, a photograph, a memory. The more you tell me, the better.',
-    'com.s2t':'We choose the format','com.s2':'Size, technique (oil or acrylic) and the style you like most from the gallery.',
-    'com.s3t':'Quote and timing','com.s3':'You receive a no-obligation quote and an estimated delivery date.',
+    'com.s2t':'We choose the format','com.s2':'Size, technique (oil or acrylic) and the style you like most.',
+    'com.s3t':'Quote and timing','com.s3':'No obligation, with an estimated delivery date.',
     'com.s4t':'Your original painting','com.s4':'Hand-painted and signed by the artist, ready to hang or to give.',
     'com.cta':'Request a quote','com.or':'or write to','com.msg':'Hello Anna, I would like to commission a painting. Here is my idea: ',
-    'ws.title':'Painting workshops','ws.intro':'Learn to paint outdoors with Anna: observing light, mixing colour and capturing the landscape from life.','ws.book':'Book a place','ws.spots':'places','ws.msg':'Hello Anna, I would like to book a place in the workshop: ','ws.empty':'No workshops published yet. This section is only shown to the public once you add one.',
-    'ev.title':'Events','ev.upcoming':'Upcoming events','ev.past':'Past events','ev.next':'Coming up','ev.seeWork':'See the finished painting','ev.empty':'New events and exhibitions will be announced soon.',
-    'bio.title':'About','bio.empty':'Coming soon.',
-    'ct.title':'Contact','ct.lead':'Interested in a painting, a commission or a collaboration?','ct.text':'Write to me on whichever channel you prefer. I answer every message personally.','ct.chat':'Open the chat','ct.chatSub':'I will reply to your email','ct.email':'Email','ct.wa':'WhatsApp','ct.ig':'Instagram','ct.phone':'Phone',
-    'footer.place':'Valencia, Spain',
+    'ws.eyebrow':'Workshops','ws.title':'Paint outdoors with Anna','ws.intro':'Learn to observe light, mix colour and capture the landscape from life.','ws.book':'Book a place','ws.spots':'places','ws.msg':'Hello Anna, I would like to book a place in the workshop: ','ws.empty':'No workshops published yet. This section is only shown to the public once you add one.',
+    'ev.eyebrow':'Agenda','ev.title':'Events','ev.upcoming':'Upcoming events','ev.past':'Other painting sessions','ev.next':'Coming up','ev.seeWork':'See the finished painting','ev.empty':'No events yet.','ev.editHint':'',
+    'bio.eyebrow':'Biography','bio.title':'About Anna','bio.empty':'Coming soon.',
+    'ct.sign':'Let’s talk','ct.lead':'Interested in a painting, a commission or a collaboration?','ct.text':'Write to me on whichever channel you prefer. I answer every message personally.','ct.chat':'Open the chat','ct.chatSub':'I will reply to your email','ct.email':'Email','ct.wa':'WhatsApp','ct.ig':'Instagram','ct.phone':'Phone',
     'lb.hint':'Tap the image to zoom · ← → to browse','lb.process':'The process','lb.interest':'I’m interested in this painting','lb.interestMsg':'Hello Anna, I’m interested in the painting “{t}”. Could you send me more information?','lb.prints':'Also available as a print.',
     'chat.title':'Write to us','chat.name':'Your name','chat.email':'Your email','chat.ph':'Type your message...','chat.hello':'Hello! Tell us how we can help and we will reply to your email.','chat.need':'Before sending, please add your name and email above so we can reply.','chat.off':'The chat is not connected yet. Meanwhile, write to '+CONTACT_EMAIL+'.','chat.ok':'Thank you, your message has been sent. We will reply to your email shortly.','chat.err':'The message could not be sent. Please try again or write to '+CONTACT_EMAIL+'.',
     'edit.exit':'Exit editing','months':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    'monthsLong':['January','February','March','April','May','June','July','August','September','October','November','December'],
     'medium':{'Óleo sobre lienzo':'Oil on canvas','Acrílico sobre lienzo':'Acrylic on canvas','Óleo sobre tabla':'Oil on board','Acuarela':'Watercolour','Técnica mixta':'Mixed media'}
   }
 };
@@ -658,6 +744,7 @@ const t = k => (I18N[lang][k] !== undefined ? I18N[lang][k] : I18N.es[k]);
 const L = (obj, base) => { if(!obj) return ''; if(lang==='en'){ return obj[base+'_en'] || obj[base] || obj[base+'_es'] || ''; } return obj[base] || obj[base+'_es'] || ''; };
 const descOf = o => lang==='en' ? (o.description_en || o.description_es || '') : (o.description_es || o.description_en || '');
 const mediumOf = m => (lang==='en' && I18N.en.medium[m]) ? I18N.en.medium[m] : (m||'');
+const sizeOf = s => String(s||'').replace(/\s*x\s*/i,' × ');
 
 /* ---------------- ICONOS ---------------- */
 const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -688,10 +775,12 @@ function safeUrl(u){ u=String(u||'').trim(); if(!u) return ''; if(/^https?:\/\//
 function thumbOf(w){ return safeUrl(w.thumb) || safeUrl(w.image); }
 function parseDate(d){ if(!d) return null; const x=new Date(d+'T00:00:00'); return isNaN(x) ? null : x; }
 function todayStart(){ const n=new Date(); n.setHours(0,0,0,0); return n; }
+function longDate(d){ const x=parseDate(d); if(!x) return ''; return lang==='en' ? `${x.getDate()} ${t('monthsLong')[x.getMonth()]} ${x.getFullYear()}` : `${x.getDate()} de ${t('monthsLong')[x.getMonth()]} de ${x.getFullYear()}`; }
 
 /* ---------------- DATOS ---------------- */
 const SEED = JSON.parse($('seedData').textContent);
 const state = { bio:SEED.bio, gallery:SEED.gallery, events:SEED.events, workshops:SEED.workshops, editMode:false };
+let natSel = 0;
 
 let supabase = null;
 function initSupabase(){
@@ -713,7 +802,6 @@ async function dbSet(key, value){
   catch(e){ toast('No se ha podido guardar. Comprueba la conexión e inténtalo de nuevo.'); return false; }
 }
 
-/* Reduce la foto en el móvil antes de subirla (máx. 1600 px, WebP) */
 async function resizeImage(file, max=1600, quality=0.82){
   let bmp;
   try{ bmp = await createImageBitmap(file, { imageOrientation:'from-image' }); }catch(e){ bmp = await createImageBitmap(file); }
@@ -748,20 +836,13 @@ function applyStaticI18n(){
 }
 function setLang(l){ lang=l; try{ localStorage.setItem('lang',l); }catch(e){} renderAll(); }
 
-/* ---------------- GALERÍA ---------------- */
-function statusBadge(w){
-  const s = w.status;
-  if(s==='available') return `<span class="badge available">${esc(w.price ? w.price : t('status.available'))}</span>`;
-  if(s==='consult') return `<span class="badge consult">${esc(t('status.consult'))}</span>`;
-  if(s==='sold') return `<span class="badge sold">${esc(t('status.sold'))}</span>`;
-  return '';
-}
+/* ---------------- COLECCIÓN ---------------- */
 function renderGallery(){
   const g = $('galleryGrid');
   if(!state.gallery.length){ g.innerHTML = `<p class="empty-msg">${esc(t('gallery.empty'))}</p>`; return; }
   g.innerHTML = state.gallery.map((w,i)=>{
     const img = thumbOf(w);
-    return `<div class="art-card" role="button" tabindex="0" data-action="open-work" data-id="${esc(w.id)}" aria-label="${esc(L(w,'title'))}">
+    return `<figure class="art" role="button" tabindex="0" data-action="open-work" data-id="${esc(w.id)}" aria-label="${esc(L(w,'title'))}">
       <div class="card-controls">
         ${i>0?`<button class="icon-btn" data-action="move-work" data-dir="-1" data-id="${esc(w.id)}" aria-label="Subir">${ICON.up}</button>`:''}
         ${i<state.gallery.length-1?`<button class="icon-btn" data-action="move-work" data-dir="1" data-id="${esc(w.id)}" aria-label="Bajar">${ICON.down}</button>`:''}
@@ -769,12 +850,8 @@ function renderGallery(){
         <button class="icon-btn danger" data-action="delete-work" data-id="${esc(w.id)}" aria-label="Eliminar">${ICON.trash}</button>
       </div>
       ${img ? `<img src="${esc(img)}" alt="${esc(L(w,'title'))}" loading="lazy" decoding="async">` : `<div class="art-no-image">Sin imagen</div>`}
-      <div class="art-meta">
-        <h3>${esc(L(w,'title'))}</h3>
-        <div class="sub">${[mediumOf(w.medium), w.size, w.year].filter(Boolean).map(esc).join(' · ')}</div>
-        <div class="art-badges">${statusBadge(w)}${w.prints?`<span class="badge prints">${esc(t('status.prints'))}</span>`:''}</div>
-      </div>
-    </div>`;
+      <figcaption><span class="t">${esc(L(w,'title'))}</span><span class="m">${[mediumOf(w.medium), sizeOf(w.size)].filter(Boolean).map(esc).join(' · ')}</span></figcaption>
+    </figure>`;
   }).join('');
 }
 
@@ -787,32 +864,91 @@ function renderMap(){
   block.classList.remove('hidden');
   if(!map){
     map = window.L.map('artMap', { scrollWheelZoom:false, dragging:!window.L.Browser.mobile, tap:false });
-    window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:18, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+    window.L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom:18, subdomains:'abcd', attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(map);
   }
   if(mapLayer) mapLayer.remove();
   mapLayer = window.L.featureGroup();
   pts.forEach(w=>{
-    const icon = window.L.divIcon({ className:'', html:`<div style="width:18px;height:18px;border-radius:50%;background:#9A6B22;border:3px solid #FBF9F2;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>`, iconSize:[18,18], iconAnchor:[9,9] });
+    const icon = window.L.divIcon({ className:'', html:`<div style="width:20px;height:20px;border-radius:50%;background:#142438;border:4px solid #D3A55A;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>`, iconSize:[20,20], iconAnchor:[10,10] });
     const m = window.L.marker([parseFloat(w.lat), parseFloat(w.lng)], { icon, title:L(w,'title') });
-    const html = `<div class="map-popup" data-action="open-work" data-id="${esc(w.id)}">${thumbOf(w)?`<img src="${esc(thumbOf(w))}" alt="">`:''}<div><strong>${esc(L(w,'title'))}</strong><span>${esc(w.place||'')}</span></div></div>`;
-    m.bindPopup(html);
+    m.bindPopup(`<div class="map-popup" data-action="open-work" data-id="${esc(w.id)}">${thumbOf(w)?`<img src="${esc(thumbOf(w))}" alt="">`:''}<div><strong>${esc(L(w,'title'))}</strong><span>${esc(w.place||'')}</span></div></div>`);
     mapLayer.addLayer(m);
   });
   mapLayer.addTo(map);
   setTimeout(()=>{ map.invalidateSize(); map.fitBounds(mapLayer.getBounds(), { padding:[40,40], maxZoom:9 }); }, 60);
 }
 
-/* ---------------- OBRAS EN VENTA ---------------- */
+/* ---------------- DEL NATURAL AL LIENZO ---------------- */
+function naturalPairs(){
+  return state.events.map(ev=>{
+    const work = ev.workId ? state.gallery.find(w=>w.id===ev.workId) : null;
+    const photo = (ev.images||[]).map(safeUrl).filter(Boolean)[0];
+    return (work && photo && safeUrl(work.image)) ? { ev, work, photo } : null;
+  }).filter(Boolean).sort((a,b)=>{ const x=a.ev.date||'', y=b.ev.date||''; if(!x&&!y) return 0; if(!x) return 1; if(!y) return -1; return y.localeCompare(x); });
+}
+function renderNatural(){
+  const pairs = naturalPairs();
+  $('natural').classList.toggle('hidden', !pairs.length);
+  $('navNatural').classList.toggle('hidden', !pairs.length);
+  if(!pairs.length) return;
+  if(natSel >= pairs.length) natSel = 0;
+  $('natTabs').innerHTML = pairs.map((p,i)=>`<button type="button" class="tab" role="tab" aria-selected="${i===natSel}" data-action="nat-tab" data-index="${i}">${esc(p.ev.location || p.work.place || L(p.work,'title'))}</button>`).join('');
+  const p = pairs[natSel];
+  $('natPanel').innerHTML = `
+    <figure>
+      <span class="lbl">${esc(t('nat.place'))}</span>
+      <button type="button" class="ph" data-action="open-event-photo" data-id="${esc(p.ev.id)}" data-index="0" aria-label="${esc(L(p.ev,'title'))}"><img src="${esc(p.photo)}" alt="${esc(L(p.ev,'title'))}" loading="lazy"></button>
+    </figure>
+    <figure>
+      <span class="lbl">${esc(t('nat.canvas'))}</span>
+      <button type="button" class="wall" data-action="open-work" data-id="${esc(p.work.id)}" aria-label="${esc(L(p.work,'title'))}"><img src="${esc(thumbOf(p.work))}" alt="${esc(L(p.work,'title'))}" loading="lazy"></button>
+    </figure>
+    <div class="info">
+      ${p.ev.date?`<span class="when">${esc(longDate(p.ev.date))}</span>`:''}
+      <h3>${esc(L(p.work,'title'))}</h3>
+      <p>${esc(descOf(p.ev))}</p>
+      <div><button type="button" class="event-link" data-action="open-work" data-id="${esc(p.work.id)}">${esc(t('nat.see'))} ${ICON.arrow.replace('<svg','<svg style="width:14px;height:14px"')}</button></div>
+    </div>`;
+}
+
+/* ---------------- OBRA DESTACADA ---------------- */
+function featuredWork(){ return state.gallery.find(w=>w.featured && safeUrl(w.image)) || null; }
+function renderFeatured(){
+  const w = featuredWork();
+  $('destacada').classList.toggle('hidden', !w);
+  if(!w){ $('featuredBox').innerHTML=''; return; }
+  const priceLine = w.status==='available' ? (w.price || t('status.available')) : w.status==='consult' ? t('status.consult') : w.status==='sold' ? t('status.sold') : '';
+  $('featuredBox').innerHTML = `
+    <button type="button" class="img" data-action="open-work" data-id="${esc(w.id)}" aria-label="${esc(L(w,'title'))}"><img src="${esc(safeUrl(w.image))}" alt="${esc(L(w,'title'))}" loading="lazy"></button>
+    <div class="txt">
+      <span class="eyebrow">${esc(t('feat.eyebrow'))}</span>
+      <h2>${esc(L(w,'title'))}</h2>
+      <span class="meta">${[mediumOf(w.medium), sizeOf(w.size), w.place, w.year].filter(Boolean).map(esc).join(' · ')}</span>
+      <p class="reveal">${esc(descOf(w))}</p>
+      <div class="buy">
+        ${priceLine?`<span class="price">${esc(priceLine)}</span>`:''}
+        ${w.status!=='sold' && w.status!=='none'?`<button type="button" class="btn btn-navy" data-action="interest" data-id="${esc(w.id)}">${esc(t('feat.interest'))}</button>`:''}
+      </div>
+    </div>`;
+}
+
+/* ---------------- OBRAS DISPONIBLES ---------------- */
 function renderSale(){
   const items = state.gallery.filter(w=>w.status==='available' || w.status==='consult');
   const el = $('saleList');
   if(!items.length){ el.innerHTML = `<p class="empty-msg">${esc(t('sale.empty'))}</p>`; return; }
-  el.innerHTML = items.map(w=>`<div class="sale-row">
-      ${thumbOf(w)?`<img class="sale-thumb" src="${esc(thumbOf(w))}" alt="${esc(L(w,'title'))}" loading="lazy" data-action="open-work" data-id="${esc(w.id)}">`:'<div class="sale-thumb"></div>'}
-      <div class="sale-info"><h3>${esc(L(w,'title'))}</h3><div class="sub">${[mediumOf(w.medium), w.size].filter(Boolean).map(esc).join(' · ')}${w.prints?' · '+esc(t('status.prints')):''}</div></div>
-      <div class="sale-price">${w.status==='available' && w.price ? esc(w.price) : `<small>${esc(w.status==='available'?t('status.available'):t('status.consult'))}</small>`}</div>
-      <button class="btn btn-primary btn-small" type="button" data-action="interest" data-id="${esc(w.id)}">${esc(t('sale.interest'))}</button>
-    </div>`).join('');
+  el.innerHTML = items.map(w=>`<article class="sale-card">
+      <button type="button" class="img" data-action="open-work" data-id="${esc(w.id)}" aria-label="${esc(L(w,'title'))}">${thumbOf(w)?`<img src="${esc(thumbOf(w))}" alt="${esc(L(w,'title'))}" loading="lazy">`:''}</button>
+      <div class="body">
+        <h3>${esc(L(w,'title'))}</h3>
+        <span class="m">${[mediumOf(w.medium), sizeOf(w.size)].filter(Boolean).map(esc).join(' · ')}</span>
+        ${w.prints?`<span class="badge-prints">${esc(t('status.prints'))}</span>`:''}
+        <div class="row">
+          <span class="price">${w.status==='available' && w.price ? esc(w.price) : `<small>${esc(w.status==='available'?t('status.available'):t('status.consult'))}</small>`}</span>
+          <button type="button" class="btn btn-outline" data-action="interest" data-id="${esc(w.id)}">${esc(t('sale.interest'))}</button>
+        </div>
+      </div>
+    </article>`).join('');
 }
 
 /* ---------------- EVENTOS ---------------- */
@@ -840,13 +976,21 @@ function eventHtml(ev, upcoming){
 }
 function renderEvents(){
   const today = todayStart();
+  const inNatural = new Set(naturalPairs().map(p=>p.ev.id));
   const upcoming = state.events.filter(e=>{ const d=parseDate(e.date); return d && d>=today; }).sort((a,b)=>a.date.localeCompare(b.date));
-  const past = state.events.filter(e=>!upcoming.includes(e)).sort((a,b)=>{
+  const rest = state.events.filter(e=>!upcoming.includes(e) && (state.editMode || !inNatural.has(e.id))).sort((a,b)=>{
     if(!a.date && !b.date) return 0; if(!a.date) return 1; if(!b.date) return -1; return b.date.localeCompare(a.date);
   });
+  const show = upcoming.length || rest.length || state.editMode;
+  $('eventos').classList.toggle('hidden', !show);
+  $('navEvents').classList.toggle('hidden', !(upcoming.length || rest.length));
   $('upcomingBlock').classList.toggle('hidden', !upcoming.length);
+  $('pastTitle').classList.toggle('hidden', !rest.length);
   $('upcomingList').innerHTML = upcoming.map(e=>eventHtml(e,true)).join('');
-  $('eventsList').innerHTML = past.length ? past.map(e=>eventHtml(e,false)).join('') : (upcoming.length ? '' : `<p class="empty-msg">${esc(t('ev.empty'))}</p>`);
+  let html = rest.map(e=>eventHtml(e,false)).join('');
+  if(state.editMode && t('ev.editHint')) html = `<p class="section-intro" style="max-width:70ch; margin-bottom:10px">${esc(t('ev.editHint'))}</p>` + html;
+  if(!rest.length && !upcoming.length) html += `<p class="empty-msg">${esc(t('ev.empty'))}</p>`;
+  $('eventsList').innerHTML = html;
 }
 
 /* ---------------- TALLERES ---------------- */
@@ -867,7 +1011,7 @@ function renderWorkshops(){
       <h3>${esc(L(w,'title'))}</h3>
       <div class="meta">${[when, w.place, w.price, w.spots ? w.spots+' '+t('ws.spots') : ''].filter(Boolean).map(esc).join(' · ')}</div>
       <p>${esc(descOf(w))}</p>
-      <button class="btn btn-primary btn-small" type="button" data-action="book-workshop" data-id="${esc(w.id)}">${esc(t('ws.book'))}</button>
+      <button class="btn btn-navy" style="align-self:flex-start; min-height:44px; margin-top:6px" type="button" data-action="book-workshop" data-id="${esc(w.id)}">${esc(t('ws.book'))}</button>
     </div>`;
   }).join('');
 }
@@ -897,7 +1041,7 @@ function renderContact(){
 
 function renderAll(){
   applyStaticI18n();
-  renderGallery(); renderMap(); renderSale(); renderEvents(); renderWorkshops(); renderBio(); renderContact();
+  renderGallery(); renderMap(); renderNatural(); renderFeatured(); renderSale(); renderEvents(); renderWorkshops(); renderBio(); renderContact();
   document.querySelectorAll('[data-action="add-work"]').forEach(b=>b.innerHTML=ICON.plus+' Añadir obra');
   document.querySelectorAll('[data-action="add-event"]').forEach(b=>b.innerHTML=ICON.plus+' Añadir evento');
   document.querySelectorAll('[data-action="add-workshop"]').forEach(b=>b.innerHTML=ICON.plus+' Añadir taller');
@@ -906,7 +1050,7 @@ function renderAll(){
   observeReveals();
 }
 
-/* ---------------- VISOR (LIGHTBOX) ---------------- */
+/* ---------------- VISOR ---------------- */
 const lbState = { open:false, mode:'works', list:[], index:0, processIndex:-1, title:'' };
 function openWork(id){
   const list = state.gallery.filter(w=>safeUrl(w.image));
@@ -915,27 +1059,16 @@ function openWork(id){
   Object.assign(lbState, { open:true, mode:'works', list, index:idx, processIndex:-1 });
   showLightbox();
 }
-function openPhotos(urls, index, title){
-  Object.assign(lbState, { open:true, mode:'photos', list:urls, index, processIndex:-1, title });
-  showLightbox();
-}
+function openPhotos(urls, index, title){ Object.assign(lbState, { open:true, mode:'photos', list:urls, index, processIndex:-1, title }); showLightbox(); }
 function showLightbox(){ $('lightbox').classList.remove('hidden'); document.body.style.overflow='hidden'; renderLightbox(); $('lbClose').focus(); }
 function closeLightbox(){ lbState.open=false; $('lightbox').classList.add('hidden'); $('lbStage').classList.remove('zoomed'); document.body.style.overflow=''; }
-function lbGo(step){
-  const n = lbState.list.length; if(n<2) return;
-  lbState.index = (lbState.index + step + n) % n; lbState.processIndex = -1;
-  $('lbStage').classList.remove('zoomed'); renderLightbox();
-}
+function lbGo(step){ const n = lbState.list.length; if(n<2) return; lbState.index = (lbState.index + step + n) % n; lbState.processIndex = -1; $('lbStage').classList.remove('zoomed'); renderLightbox(); }
 function renderLightbox(){
   const box = $('lightbox'), img = $('lbImg'), info = $('lbInfo');
   const n = lbState.list.length;
   $('lbCounter').textContent = n>1 ? `${lbState.index+1} / ${n}` : '';
   $('lbPrev').classList.toggle('hidden', n<2); $('lbNext').classList.toggle('hidden', n<2);
-  if(lbState.mode==='photos'){
-    box.classList.add('simple');
-    img.src = lbState.list[lbState.index]; img.alt = lbState.title || '';
-    return;
-  }
+  if(lbState.mode==='photos'){ box.classList.add('simple'); img.src = lbState.list[lbState.index]; img.alt = lbState.title || ''; return; }
   box.classList.remove('simple');
   const w = lbState.list[lbState.index];
   const process = (w.process||[]).map(safeUrl).filter(Boolean);
@@ -944,7 +1077,7 @@ function renderLightbox(){
   const priceLine = w.status==='available' ? (w.price || t('status.available')) : w.status==='consult' ? t('status.consult') : w.status==='sold' ? t('status.sold') : '';
   info.innerHTML = `
     <h3>${esc(L(w,'title'))}</h3>
-    <div class="sub">${[mediumOf(w.medium), w.size, w.year, w.place].filter(Boolean).map(esc).join(' · ')}</div>
+    <div class="sub">${[mediumOf(w.medium), sizeOf(w.size), w.year, w.place].filter(Boolean).map(esc).join(' · ')}</div>
     ${priceLine?`<div class="lb-price">${esc(priceLine)}</div>`:''}
     <p>${esc(descOf(w))}</p>
     ${w.prints?`<p style="color:#A7C9A0">${esc(t('lb.prints'))}</p>`:''}
@@ -952,7 +1085,7 @@ function renderLightbox(){
       <button type="button" data-action="lb-process" data-index="-1" class="${lbState.processIndex<0?'active':''}"><img src="${esc(thumbOf(w))}" alt=""></button>
       ${process.map((p,i)=>`<button type="button" data-action="lb-process" data-index="${i}" class="${lbState.processIndex===i?'active':''}"><img src="${esc(p)}" alt="" loading="lazy"></button>`).join('')}
     </div></div>`:''}
-    ${w.status!=='sold'?`<button class="btn btn-primary" type="button" data-action="interest" data-id="${esc(w.id)}">${esc(t('lb.interest'))}</button>`:''}
+    ${w.status!=='sold' && w.status!=='none'?`<button class="btn btn-gold" type="button" data-action="interest" data-id="${esc(w.id)}">${esc(t('lb.interest'))}</button>`:''}
   `;
 }
 (function setupLightbox(){
@@ -963,49 +1096,25 @@ function renderLightbox(){
   $('lbClose').addEventListener('click', closeLightbox);
   stage.addEventListener('click', e=>{ if(e.target===stage) closeLightbox(); });
   const setOrigin = (x,y)=>{ const r=img.getBoundingClientRect(); img.style.transformOrigin = `${Math.max(0,Math.min(100,(x-r.left)/r.width*100))}% ${Math.max(0,Math.min(100,(y-r.top)/r.height*100))}%`; };
-  img.addEventListener('click', e=>{
-    if(stage.classList.contains('zoomed')){ stage.classList.remove('zoomed'); }
-    else { setOrigin(e.clientX,e.clientY); stage.classList.add('zoomed'); }
-  });
+  img.addEventListener('click', e=>{ if(stage.classList.contains('zoomed')) stage.classList.remove('zoomed'); else { setOrigin(e.clientX,e.clientY); stage.classList.add('zoomed'); } });
   stage.addEventListener('mousemove', e=>{ if(stage.classList.contains('zoomed')){ const r=stage.getBoundingClientRect(); img.style.transformOrigin = `${(e.clientX-r.left)/r.width*100}% ${(e.clientY-r.top)/r.height*100}%`; } });
   let sx=0, sy=0, moved=false;
   stage.addEventListener('touchstart', e=>{ if(e.touches.length!==1) return; sx=e.touches[0].clientX; sy=e.touches[0].clientY; moved=false; }, {passive:true});
-  stage.addEventListener('touchmove', e=>{
-    if(e.touches.length!==1) return; moved=true;
-    if(stage.classList.contains('zoomed')){ const r=stage.getBoundingClientRect(); img.style.transformOrigin = `${(e.touches[0].clientX-r.left)/r.width*100}% ${(e.touches[0].clientY-r.top)/r.height*100}%`; }
-  }, {passive:true});
-  stage.addEventListener('touchend', e=>{
-    if(!moved || stage.classList.contains('zoomed')) return;
-    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
-    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5) lbGo(dx<0 ? 1 : -1);
-  });
-  document.addEventListener('keydown', e=>{
-    if(!lbState.open) return;
-    if(e.key==='Escape') closeLightbox();
-    else if(e.key==='ArrowLeft') lbGo(-1);
-    else if(e.key==='ArrowRight') lbGo(1);
-  });
+  stage.addEventListener('touchmove', e=>{ if(e.touches.length!==1) return; moved=true; if(stage.classList.contains('zoomed')){ const r=stage.getBoundingClientRect(); img.style.transformOrigin = `${(e.touches[0].clientX-r.left)/r.width*100}% ${(e.touches[0].clientY-r.top)/r.height*100}%`; } }, {passive:true});
+  stage.addEventListener('touchend', e=>{ if(!moved || stage.classList.contains('zoomed')) return; const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.5) lbGo(dx<0 ? 1 : -1); });
+  document.addEventListener('keydown', e=>{ if(!lbState.open) return; if(e.key==='Escape') closeLightbox(); else if(e.key==='ArrowLeft') lbGo(-1); else if(e.key==='ArrowRight') lbGo(1); });
 })();
 
 /* ---------------- CHAT ---------------- */
 const chatHistory = [];
-function renderChat(){
-  const box = $('chatMessages');
-  box.innerHTML = [{from:'system', text:t('chat.hello')}].concat(chatHistory).map(m=>`<div class="chat-bubble ${m.from}">${esc(m.text)}</div>`).join('');
-  box.scrollTop = box.scrollHeight;
-}
-function toggleChat(show){
-  const p = $('chatPanel'); const s = show!==undefined ? show : p.classList.contains('hidden');
-  p.classList.toggle('hidden', !s);
-  if(s){ renderChat(); $('chatFab').classList.remove('off'); }
-}
+function renderChat(){ const box = $('chatMessages'); box.innerHTML = [{from:'system', text:t('chat.hello')}].concat(chatHistory).map(m=>`<div class="chat-bubble ${m.from}">${esc(m.text)}</div>`).join(''); box.scrollTop = box.scrollHeight; }
+function toggleChat(show){ const p = $('chatPanel'); const s = show!==undefined ? show : p.classList.contains('hidden'); p.classList.toggle('hidden', !s); if(s){ renderChat(); $('chatFab').classList.remove('off'); } }
 function openChat(prefill){
   if(lbState.open) closeLightbox();
   toggleChat(true);
-  const input = $('chatInput');
-  if(prefill){ input.value = prefill; }
+  const input = $('chatInput'); if(prefill){ input.value = prefill; }
   const nameEl = $('chatName');
-  setTimeout(()=>{ (nameEl.value ? input : nameEl).focus(); input.setSelectionRange && input.setSelectionRange(input.value.length, input.value.length); }, 50);
+  setTimeout(()=>{ (nameEl.value ? input : nameEl).focus(); }, 50);
 }
 (function setupChat(){
   $('chatFab').innerHTML = ICON.chat; $('chatClose').innerHTML = ICON.close;
@@ -1042,7 +1151,7 @@ function openChat(prefill){
   document.querySelectorAll('.lang-switch button').forEach(b=>b.addEventListener('click', ()=>setLang(b.dataset.lang)));
 })();
 
-/* ---------------- MODAL Y FORMULARIOS (MODO EDICIÓN) ---------------- */
+/* ---------------- FORMULARIOS (MODO EDICIÓN) ---------------- */
 function openModal(html){ $('modalBox').innerHTML = `<button class="modal-close" type="button" data-action="close-modal" aria-label="Cerrar">${ICON.close}</button>` + html; $('modalOverlay').classList.remove('hidden'); }
 function closeModal(){ $('modalOverlay').classList.add('hidden'); $('modalBox').innerHTML=''; }
 $('modalOverlay').addEventListener('click', e=>{ if(e.target.id==='modalOverlay') closeModal(); });
@@ -1062,8 +1171,7 @@ document.addEventListener('change', async e=>{
   for(const f of files){
     try{
       const url = await uploadImage(f);
-      if(inp.dataset.uploadMultiple==='1'){ target.value = (target.value.trim() ? target.value.trim()+'\n' : '') + url; }
-      else target.value = url;
+      if(inp.dataset.uploadMultiple==='1'){ target.value = (target.value.trim() ? target.value.trim()+'\n' : '') + url; } else target.value = url;
       done++; status.textContent = `Subiendo ${done}/${files.length}…`;
     }catch(err){ status.textContent = 'Error al subir una foto. Revisa el espacio de almacenamiento (ver guía).'; return; }
   }
@@ -1087,9 +1195,10 @@ function openWorkForm(id){
       <div class="field"><label>Año</label><input type="text" name="year" value="${v('year')}"></div>
       <div class="field"><label>Lugar donde se pintó</label><input type="text" name="place" value="${v('place')}"></div>
     </div>
-    <div class="field"><label>Imagen de la obra</label><input type="text" inputmode="url" name="image" placeholder="https://..." value="${v('image')}">${uploadField('image',false)}<div class="field-hint">Sube la foto desde el móvil o pega un enlace. Se reduce automáticamente.</div></div>
+    <div class="field"><label>Imagen de la obra</label><input type="text" inputmode="url" name="image" placeholder="https://..." value="${v('image')}">${uploadField('image',false)}<div class="field-hint">Mejor una foto solo del lienzo, sin marco ni pared. Se reduce automáticamente.</div></div>
     <div class="field"><label>Descripción (español)</label><textarea name="description_es">${v('description_es')}</textarea></div>
     <div class="field"><label>Description (English)</label><textarea name="description_en">${v('description_en')}</textarea></div>
+    <div class="field"><label class="field-check"><input type="checkbox" name="featured" ${w&&w.featured?'checked':''}> Obra destacada (aparece en grande en la página)</label></div>
     <div class="form-legend">Venta</div>
     <div class="field-row">
       <div class="field"><label>Estado</label><select name="status">
@@ -1101,7 +1210,7 @@ function openWorkForm(id){
     <div class="form-legend">Mapa y proceso (opcional)</div>
     <div class="field"><label>Coordenadas para el mapa</label><input type="text" name="coords" placeholder="39.1853, -0.4772" value="${w&&w.lat!==undefined&&w.lat!==''?esc(w.lat+', '+w.lng):''}"><div class="field-hint">En Google Maps, mantén pulsado el lugar y copia los dos números que aparecen.</div></div>
     <div class="field"><label>Fotos del proceso (una por línea)</label><textarea name="process" placeholder="Boceto, primeras capas, detalle...">${esc((w&&w.process||[]).join('\n'))}</textarea>${uploadField('process',true)}</div>
-    <div class="modal-actions">${w?`<button type="button" class="link-btn" data-action="delete-work" data-id="${esc(w.id)}">Eliminar obra</button>`:'<span></span>'}<button type="submit" class="btn btn-primary">Guardar</button></div>
+    <div class="modal-actions">${w?`<button type="button" class="link-btn" data-action="delete-work" data-id="${esc(w.id)}">Eliminar obra</button>`:'<span></span>'}<button type="submit" class="btn btn-navy">Guardar</button></div>
   </form>`);
   $('workForm').addEventListener('submit', async e=>{
     e.preventDefault();
@@ -1109,14 +1218,16 @@ function openWorkForm(id){
     const coords = String(f.get('coords')||'').split(',').map(s=>parseFloat(s));
     const hasC = coords.length===2 && coords.every(isFinite);
     const image = String(f.get('image')).trim();
+    const featured = f.get('featured')==='on';
     const data = Object.assign({}, w||{}, {
       id: w ? w.id : uid(), title:f.get('title').trim(), title_en:f.get('title_en').trim(), medium:f.get('medium').trim(), size:f.get('size').trim(),
       year:f.get('year').trim(), place:f.get('place').trim(), image, thumb:(w && w.image===image) ? (w.thumb||'') : '',
       description_es:f.get('description_es').trim(), description_en:f.get('description_en').trim(),
-      status:f.get('status'), price:f.get('price').trim(), prints:f.get('prints')==='on',
+      status:f.get('status'), price:f.get('price').trim(), prints:f.get('prints')==='on', featured,
       lat: hasC ? coords[0] : '', lng: hasC ? coords[1] : '', process: linesOf(f.get('process'))
     });
-    const next = w ? state.gallery.map(x=>x.id===w.id?data:x) : state.gallery.concat([data]);
+    let next = w ? state.gallery.map(x=>x.id===w.id?data:x) : state.gallery.concat([data]);
+    if(featured) next = next.map(x=> x.id===data.id ? x : Object.assign({}, x, { featured:false }));
     if(await dbSet('site-gallery', next)){ state.gallery = next; closeModal(); renderAll(); toast('Obra guardada'); }
   });
 }
@@ -1128,14 +1239,14 @@ function openEventForm(id){
     <div class="field"><label>Título (español)</label><input type="text" name="title" required value="${v('title')}"></div>
     <div class="field"><label>Title (English)</label><input type="text" name="title_en" value="${v('title_en')}"></div>
     <div class="field-row">
-      <div class="field"><label>Fecha</label><input type="date" name="date" value="${v('date')}"><div class="field-hint">Si la fecha es futura, aparece en «Próximos eventos».</div></div>
+      <div class="field"><label>Fecha</label><input type="date" name="date" value="${v('date')}"><div class="field-hint">Si es futura, aparece en «Próximos eventos».</div></div>
       <div class="field"><label>Lugar</label><input type="text" name="location" value="${v('location')}"></div>
     </div>
     <div class="field"><label>Descripción (español)</label><textarea name="description_es">${v('description_es')}</textarea></div>
     <div class="field"><label>Description (English)</label><textarea name="description_en">${v('description_en')}</textarea></div>
     <div class="field"><label>Fotos del evento (una por línea)</label><textarea name="images">${esc((ev&&ev.images||[]).join('\n'))}</textarea>${uploadField('images',true)}</div>
-    <div class="field"><label>Obra relacionada</label><select name="workId"><option value="">— Ninguna —</option>${state.gallery.map(w=>`<option value="${esc(w.id)}" ${ev&&ev.workId===w.id?'selected':''}>${esc(w.title)}</option>`).join('')}</select></div>
-    <div class="modal-actions">${ev?`<button type="button" class="link-btn" data-action="delete-event" data-id="${esc(ev.id)}">Eliminar evento</button>`:'<span></span>'}<button type="submit" class="btn btn-primary">Guardar</button></div>
+    <div class="field"><label>Obra relacionada</label><select name="workId"><option value="">— Ninguna —</option>${state.gallery.map(w=>`<option value="${esc(w.id)}" ${ev&&ev.workId===w.id?'selected':''}>${esc(w.title)}</option>`).join('')}</select><div class="field-hint">Con obra relacionada y foto, aparece en «Del natural al lienzo».</div></div>
+    <div class="modal-actions">${ev?`<button type="button" class="link-btn" data-action="delete-event" data-id="${esc(ev.id)}">Eliminar evento</button>`:'<span></span>'}<button type="submit" class="btn btn-navy">Guardar</button></div>
   </form>`);
   $('eventForm').addEventListener('submit', async e=>{
     e.preventDefault();
@@ -1166,7 +1277,7 @@ function openWorkshopForm(id){
     </div>
     <div class="field"><label>Descripción (español)</label><textarea name="description_es">${v('description_es')}</textarea></div>
     <div class="field"><label>Description (English)</label><textarea name="description_en">${v('description_en')}</textarea></div>
-    <div class="modal-actions">${w?`<button type="button" class="link-btn" data-action="delete-workshop" data-id="${esc(w.id)}">Eliminar taller</button>`:'<span></span>'}<button type="submit" class="btn btn-primary">Guardar</button></div>
+    <div class="modal-actions">${w?`<button type="button" class="link-btn" data-action="delete-workshop" data-id="${esc(w.id)}">Eliminar taller</button>`:'<span></span>'}<button type="submit" class="btn btn-navy">Guardar</button></div>
   </form>`);
   $('wsForm').addEventListener('submit', async e=>{
     e.preventDefault();
@@ -1197,7 +1308,7 @@ function openBioForm(){
       <div class="field"><label>Ciudad</label><input type="text" name="city" value="${v('city')}"></div>
     </div>
     <div class="field-hint">Instagram y WhatsApp solo se muestran en la web si los rellenas. Para WhatsApp incluye el prefijo +34.</div>
-    <div class="modal-actions"><span></span><button type="submit" class="btn btn-primary">Guardar</button></div>
+    <div class="modal-actions"><span></span><button type="submit" class="btn btn-navy">Guardar</button></div>
   </form>`);
   $('bioForm').addEventListener('submit', async e=>{
     e.preventDefault();
@@ -1218,15 +1329,16 @@ async function moveWork(id, dir){
   if(await dbSet('site-gallery', next)){ state.gallery = next; renderAll(); }
 }
 
-/* ---------------- ACCIONES (un solo manejador de clics) ---------------- */
+/* ---------------- ACCIONES ---------------- */
 document.addEventListener('click', e=>{
   const el = e.target.closest('[data-action]'); if(!el) return;
   const a = el.dataset.action, id = el.dataset.id;
   const editActs = ['edit-work','delete-work','move-work','edit-event','delete-event','edit-workshop','delete-workshop','add-work','add-event','add-workshop','edit-bio'];
   if(editActs.includes(a)){ e.stopPropagation(); if(!state.editMode) return; }
   switch(a){
-    case 'open-work': if(state.editMode && el.classList.contains('art-card')) openWorkForm(id); else openWork(id); break;
+    case 'open-work': if(state.editMode && el.classList.contains('art')) openWorkForm(id); else openWork(id); break;
     case 'open-event-photo': { const ev = state.events.find(x=>x.id===id); if(ev) openPhotos((ev.images||[]).map(safeUrl).filter(Boolean), +el.dataset.index||0, L(ev,'title')); break; }
+    case 'nat-tab': natSel = +el.dataset.index || 0; renderNatural(); break;
     case 'lb-process': lbState.processIndex = +el.dataset.index; $('lbStage').classList.remove('zoomed'); renderLightbox(); break;
     case 'interest': { const w = state.gallery.find(x=>x.id===id); if(w) openChat(t('lb.interestMsg').replace('{t}', L(w,'title'))); break; }
     case 'chat-commission': openChat(t('com.msg')); break;
@@ -1246,18 +1358,16 @@ document.addEventListener('click', e=>{
     case 'edit-bio': openBioForm(); break;
   }
 });
-document.addEventListener('keydown', e=>{
-  if((e.key==='Enter'||e.key===' ') && e.target.matches('.art-card')){ e.preventDefault(); e.target.click(); }
-});
+document.addEventListener('keydown', e=>{ if((e.key==='Enter'||e.key===' ') && e.target.matches('.art')){ e.preventDefault(); e.target.click(); } });
 
-/* ---------------- MODO EDICIÓN (acceso: añade #editar a la dirección) ---------------- */
+/* ---------------- MODO EDICIÓN (añade #editar a la dirección) ---------------- */
 function setEditMode(on){ state.editMode = on; document.body.classList.toggle('edit-active', on); renderAll(); }
 $('editExit').addEventListener('click', async ()=>{ if(supabase) await supabase.auth.signOut(); setEditMode(false); toast('Sesión cerrada'); });
 function triggerEditFlow(){
   if(state.editMode) return;
   if(!supabase){
     const banner = $('setupBanner'); banner.textContent = 'Vista previa sin conectar — sigue la guía de publicación para activar el guardado y la edición.'; banner.classList.remove('hidden');
-    openModal(`<h3>Falta conectar la base de datos</h3><p style="color:var(--ink-soft)">Esta copia de la web todavía no está conectada a Supabase, así que no se puede iniciar sesión ni guardar cambios. Sigue la guía de publicación para crearla y pegar tus datos en el archivo.</p>`);
+    openModal(`<h3>Falta conectar la base de datos</h3><p style="color:var(--ink-soft)">Esta copia de la web todavía no está conectada a Supabase, así que no se puede iniciar sesión ni guardar cambios.</p>`);
     return;
   }
   openModal(`<h3>Iniciar sesión</h3>
@@ -1265,7 +1375,7 @@ function triggerEditFlow(){
       <div class="field"><label>Email</label><input type="email" name="email" required autocomplete="username"></div>
       <div class="field"><label>Contraseña</label><input type="password" name="password" required autocomplete="current-password"></div>
       <div class="modal-error hidden" id="loginError">Email o contraseña incorrectos.</div>
-      <div class="modal-actions"><span></span><button type="submit" class="btn btn-primary">Entrar</button></div>
+      <div class="modal-actions"><span></span><button type="submit" class="btn btn-navy">Entrar</button></div>
     </form>`);
   $('loginForm').addEventListener('submit', async e=>{
     e.preventDefault();
@@ -1275,9 +1385,7 @@ function triggerEditFlow(){
     closeModal(); setEditMode(true); toast('Sesión iniciada. Pulsa sobre cualquier elemento para editarlo.');
   });
 }
-function checkEditHash(){
-  if(location.hash==='#editar'){ history.replaceState(null,'',location.pathname+location.search); triggerEditFlow(); }
-}
+function checkEditHash(){ if(location.hash==='#editar'){ history.replaceState(null,'',location.pathname+location.search); triggerEditFlow(); } }
 window.addEventListener('hashchange', checkEditHash);
 
 /* ---------------- ARRANQUE ---------------- */
@@ -1288,7 +1396,10 @@ async function boot(){
   if(supabase){
     const [bio, gal, ev, ws, sess] = await Promise.all([dbGet('site-bio'), dbGet('site-gallery'), dbGet('site-events'), dbGet('site-workshops'), supabase.auth.getSession().catch(()=>({data:{}}))]);
     if(bio) state.bio = Object.assign({}, SEED.bio, bio);
-    if(Array.isArray(gal)) state.gallery = gal;
+    if(Array.isArray(gal)){
+      state.gallery = gal;
+      if(!gal.some(w=>w.featured)){ const s = gal.find(w=>w.id==='seed-3') || gal.find(w=>safeUrl(w.image)); if(s) s.featured = true; }
+    }
     if(Array.isArray(ev)) state.events = ev;
     if(Array.isArray(ws)) state.workshops = ws;
     state.editMode = !!(sess && sess.data && sess.data.session);
