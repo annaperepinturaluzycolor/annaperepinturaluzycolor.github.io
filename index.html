@@ -261,7 +261,7 @@
   .pane .wall img{max-height:100%; max-width:100%; width:auto; box-shadow:var(--hang);}
   .pane .info{display:flex; flex-direction:column; justify-content:flex-end; gap:12px; padding:clamp(6px, 1vw, 14px);}
   .pane .when{font-size:13px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--sea);}
-  .pane h3{font-weight:900; font-size:clamp(24px, 2.4vw, 36px); letter-spacing:-0.035em; line-height:1.05;}
+  .pane h3{color:var(--sea); font-weight:900; font-size:clamp(24px, 2.4vw, 36px); letter-spacing:-0.035em; line-height:1.05;}
   .pane p{color:var(--ink-soft); font-weight:500;}
   .pane .ph img{transform-origin:50% 40%;}
   .pane.on .ph img{animation:kbPlace 9s var(--ease-out) both;}
@@ -326,9 +326,7 @@
   .about{padding-block:0 clamp(80px, 10vw, 150px);}
   .about-card{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); background:var(--deep); color:var(--white); border-radius:var(--r); overflow:hidden; position:relative;}
   .about-photo{overflow:hidden; min-height:460px; position:relative;}
-  .about-photo img{scale:1.12; position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover; object-position:58% 25%; will-change:transform;}
-  .about-card.in .about-photo img{animation:kbAnna 16s var(--ease-out) both;}
-  @keyframes kbAnna{from{scale:1.12;} to{scale:1;}}
+  .about-photo img{position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover; object-position:58% 25%; will-change:transform;}
   .about-copy{padding:clamp(28px, 5vw, 72px); display:grid; gap:20px; align-content:center; min-width:0;}
   .about-copy .pt{font-size:clamp(64px, 9vw, 150px);}
   .about-copy .lead{font-weight:800; font-size:clamp(20px, 2vw, 28px); letter-spacing:-0.03em; line-height:1.2;}
