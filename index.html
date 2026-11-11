@@ -263,6 +263,13 @@
   .pane .when{font-size:13px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--sea);}
   .pane h3{font-weight:900; font-size:clamp(24px, 2.4vw, 36px); letter-spacing:-0.035em; line-height:1.05;}
   .pane p{color:var(--ink-soft); font-weight:500;}
+  .pane .ph img{transform-origin:50% 40%;}
+  .pane.on .ph img{animation:kbPlace 9s var(--ease-out) both;}
+  @keyframes kbPlace{from{scale:1.14;} to{scale:1;}}
+  .nat-progress{height:2px; background:var(--line); border-radius:2px; overflow:hidden; margin-top:clamp(16px, 2vw, 24px); max-width:320px;}
+  .nat-progress i{display:block; height:100%; background:var(--ink); transform-origin:left; transform:scaleX(0);}
+  .nat-progress i.run{animation:fill 7000ms linear forwards;}
+  .nat-progress.paused i{animation-play-state:paused;}
   .link-arrow{display:inline-flex; align-items:center; gap:6px; background:none; border:none; padding:0 0 2px; color:var(--ink); font-size:13px; font-weight:800; border-bottom:1.5px solid currentColor; align-self:flex-start;}
   @media (max-width:900px){ .pane{grid-template-columns:minmax(0,1fr) minmax(0,1fr);} .pane .info{grid-column:1 / -1;} }
   @media (max-width:560px){ .pane{grid-template-columns:minmax(0,1fr);} .pane .wall{aspect-ratio:1/1;} }
@@ -319,7 +326,9 @@
   .about{padding-block:0 clamp(80px, 10vw, 150px);}
   .about-card{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); background:var(--deep); color:var(--white); border-radius:var(--r); overflow:hidden; position:relative;}
   .about-photo{overflow:hidden; min-height:460px; position:relative;}
-  .about-photo img{position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover; object-position:58% 25%; will-change:transform;}
+  .about-photo img{scale:1.12; position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover; object-position:58% 25%; will-change:transform;}
+  .about-card.in .about-photo img{animation:kbAnna 16s var(--ease-out) both;}
+  @keyframes kbAnna{from{scale:1.12;} to{scale:1;}}
   .about-copy{padding:clamp(28px, 5vw, 72px); display:grid; gap:20px; align-content:center; min-width:0;}
   .about-copy .pt{font-size:clamp(64px, 9vw, 150px);}
   .about-copy .lead{font-weight:800; font-size:clamp(20px, 2vw, 28px); letter-spacing:-0.03em; line-height:1.2;}
@@ -456,10 +465,10 @@
   .lb-info .btn-gold{background:var(--white); color:var(--ink);}
 
   @media (prefers-reduced-motion: reduce){
+    /* con «reducir movimiento» se mantienen los fundidos y zooms suaves; se quitan desplazamientos y parallax */
     html{scroll-behavior:auto;}
-    *,*::before,*::after{animation-duration:1ms !important; animation-delay:0ms !important; transition-duration:1ms !important;}
-    .strip-track{animation:none;}
-    .statement .w{opacity:1;} .statement .pill{opacity:1; transform:translateY(-0.06em);}
+    .js .rv,.js .reveal{transform:none;}
+    .js .pt{transform:none;}
   }
 </style>
 </head>
@@ -557,6 +566,7 @@
         </div>
         <div class="tabs" role="tablist" aria-label="Lugares" id="natTabs"></div>
         <div class="stage" id="natStage"></div>
+        <div class="nat-progress" id="natProgress" aria-hidden="true"><i></i></div>
       </div>
     </section>
 
@@ -903,7 +913,7 @@ async function uploadImage(file){
 }
 
 /* ---------------- APARICIÓN AL HACER SCROLL ---------------- */
-const canAnim = ('IntersectionObserver' in window) && !reduceMotion;
+const canAnim = ('IntersectionObserver' in window);
 if(canAnim) document.documentElement.classList.add('js');
 const io = canAnim ? new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{ rootMargin:'0px 0px -10% 0px' }) : null;
 function observeReveals(){ document.querySelectorAll('.rv:not(.in), .reveal:not(.in), .art:not(.in), .pt:not(.in)').forEach(el=> io ? io.observe(el) : el.classList.add('in')); }
@@ -940,7 +950,7 @@ function heroShow(i){
   $('nowT').innerHTML = `<button type="button" class="now-link" data-action="open-work" data-id="${esc(w.id)}">${esc(num2(w))} — ${esc(L(w,'title'))}<small>${[mediumOf(w.medium), sizeOf(w.size), w.place].filter(Boolean).map(esc).join(' · ')}</small></button>`;
   heroRestart();
 }
-function heroRestart(){ clearTimeout(heroTimer); if(!reduceMotion && heroList.length>1 && !heroPaused && !lbState.open) heroTimer = setTimeout(()=>heroShow(heroCur+1), 6500); }
+function heroRestart(){ clearTimeout(heroTimer); if(heroList.length>1 && !heroPaused && !lbState.open) heroTimer = setTimeout(()=>heroShow(heroCur+1), 6500); }
 $('hero').addEventListener('pointerenter', e=>{ if(e.pointerType==='mouse'){ heroPaused=true; $('hero').classList.add('paused'); clearTimeout(heroTimer); } });
 $('hero').addEventListener('pointerleave', e=>{ if(e.pointerType==='mouse'){ heroPaused=false; $('hero').classList.remove('paused'); heroRestart(); } });
 
@@ -1044,6 +1054,7 @@ function renderNatural(){
   $('navNatural').classList.toggle('hidden', !pairs.length);
   if(!pairs.length) return;
   if(natSel >= pairs.length) natSel = 0;
+  setTimeout(natRestart, 0);
   $('natTabs').innerHTML = pairs.map((p,i)=>`<button type="button" class="tab press" role="tab" aria-selected="${i===natSel}" data-action="nat-tab" data-index="${i}">${esc(p.ev.location || p.work.place || L(p.work,'title'))}</button>`).join('');
   $('natStage').innerHTML = pairs.map((p,i)=>`
     <div class="pane ${i===natSel?'on':''}" role="tabpanel" ${i===natSel?'':'aria-hidden="true"'}>
@@ -1065,6 +1076,7 @@ function renderNatural(){
 }
 function selectNatural(i){
   natSel = i;
+  setTimeout(natRestart, 0);
   $('natTabs').querySelectorAll('.tab').forEach((b,j)=>b.setAttribute('aria-selected', j===i));
   $('natStage').querySelectorAll('.pane').forEach((p,j)=>{
     const on = j===i; p.classList.toggle('on', on);
@@ -1138,6 +1150,22 @@ function renderWorkshops(){
   }).join('');
 }
 
+/* cambio automático de lugar en «Del natural al lienzo» */
+let natTimer = null, natHover = false, natVisible = false;
+function natRestart(){
+  clearTimeout(natTimer);
+  const bar = $('natProgress'), n = $('natStage').children.length, i = bar.querySelector('i');
+  i.classList.remove('run'); void i.offsetWidth;
+  if(n < 2 || natHover || !natVisible || lbState.open){ bar.classList.toggle('hidden', n < 2); return; }
+  bar.classList.remove('hidden'); i.classList.add('run');
+  natTimer = setTimeout(()=>selectNatural((natSel + 1) % n), 7000);
+}
+$('natStage').addEventListener('pointerenter', e=>{ if(e.pointerType==='mouse'){ natHover=true; natRestart(); } });
+$('natStage').addEventListener('pointerleave', e=>{ if(e.pointerType==='mouse'){ natHover=false; natRestart(); } });
+if('IntersectionObserver' in window){
+  new IntersectionObserver(es=>{ natVisible = es[0].isIntersecting; natRestart(); }, { threshold:0.35 }).observe($('natStage'));
+} else { natVisible = true; }
+
 /* ---------------- SOBRE ANNA Y CONTACTO ---------------- */
 function renderBio(){
   const b = state.bio;
@@ -1207,14 +1235,14 @@ function onScroll(){
     const r = $('quoteText').getBoundingClientRect();
     const p = Math.min(1, Math.max(0, (vh*0.9 - r.top) / (r.height + vh*0.3)));
     const lit = Math.round(p * quoteItems.length);
-    for(let i=0;i<quoteItems.length;i++) quoteItems[i].classList.toggle('lit', reduceMotion || i<lit);
+    for(let i=0;i<quoteItems.length;i++) quoteItems[i].classList.toggle('lit', i<lit);
   }
-  if(reduceMotion) return;
   document.querySelectorAll('.pt').forEach(el=>{
     const r = el.getBoundingClientRect(); if(r.bottom<0 || r.top>vh) return;
     const p = 1 - (r.top + r.height) / (vh + r.height);
     el.style.setProperty('--bx', (5 + p*90).toFixed(1) + '%');
   });
+  if(reduceMotion) return;
   const a = $('aboutImg').parentNode.getBoundingClientRect();
   if(a.bottom>0 && a.top<vh){ $('aboutImg').style.transform = 'translate3d(0,' + (((a.top + a.height/2 - vh/2)/vh) * -7).toFixed(2) + '%,0)'; }
   const c = $('contactImg').parentNode.getBoundingClientRect();
